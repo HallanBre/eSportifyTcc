@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Image } from 'react-native';
 import ListaJogos from './components/ListaJogos';
 import LoginUsuario from './components/LoginUsuario';
 import CadastroUsuario from './components/CadastroUsuario';
+import AgendaJogos from './components/AgendaJogos';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 
@@ -13,9 +14,9 @@ function MyTabs() {
   return (
     <Tab.Navigator screenOptions={{headerTransparent : true, title: "", tabBarActiveTintColor: '#000'}}>
       <Tab.Screen name="Lista Jogos"  component={ListaJogos} options={{
-        tabBarIcon: ({ color }) => (
+        tabBarIcon: () => (
           <Image
-            style={{ width: 35, height: 35 }}
+            style={{ width: 30, height: 30}}
             source={require('../img/homeIcon.png')
           }/>
          ),
@@ -23,7 +24,16 @@ function MyTabs() {
         }}
       />
 
-      <Tab.Screen name="Login" component={LoginUsuario} />
+      <Tab.Screen name="Login" component={AgendaJogos} options={{
+        tabBarIcon: () =>(
+          <Image
+            style= {{width:30, height:30, marginTop:5, marginLeft:5}}
+            source={require('../img/Agenda.png')
+            }/>
+          ),
+          tabBarLabel: "agenda"
+        }} 
+      />
     </Tab.Navigator>
   );
 }
@@ -38,13 +48,6 @@ export default function App() {
 }
 
 
-// export default function App() {
-//   return (
-//     <ListaJogos/>
-//     //<CadastroUsuario/>
-//     //<LoginUsuario/>
-//   );
-  
-//}
+
 
 
