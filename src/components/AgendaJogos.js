@@ -2,6 +2,7 @@ import React from 'react'
 import {Text,SafeAreaView, StyleSheet,View} from 'react-native'
 
 
+
 export default props => {
     const data = [
         { id: 1, name: "Jogo 1", price: 10, data:"10/12/22" },

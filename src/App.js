@@ -1,7 +1,7 @@
 
 import { StyleSheet, Text, View, Image } from 'react-native';
 import ListaJogos from './components/ListaJogos';
-import LoginUsuario from './components/LoginUsuario';
+import LoginUsuario from './components/Login/LoginUsuario';
 import CadastroUsuario from './components/CadastroUsuario';
 import AgendaJogos from './components/AgendaJogos';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -12,6 +12,7 @@ const Tab = createBottomTabNavigator();
 //botões de navegação inferior
 function MyTabs() {
   return (
+    
     <Tab.Navigator screenOptions={{headerTransparent : true, title: "", tabBarActiveTintColor: '#000'}}>
       <Tab.Screen name="Lista Jogos"  component={ListaJogos} options={{
         tabBarIcon: () => (
@@ -24,7 +25,7 @@ function MyTabs() {
         }}
       />
 
-      <Tab.Screen name="Login" component={AgendaJogos} options={{
+      <Tab.Screen name="Login" component={LoginUsuario} options={{
         tabBarIcon: () =>(
           <Image
             style= {{width:30, height:30, marginTop:5, marginLeft:5}}
@@ -41,9 +42,7 @@ function MyTabs() {
 //container de navegação
 export default function App() {
   return(
-    <NavigationContainer >
-      <MyTabs />    
-    </NavigationContainer>
+    <LoginUsuario/>
   );
 }
 
