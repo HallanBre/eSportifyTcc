@@ -1,35 +1,31 @@
 import React from "react";
-import {SafeAreaView, StyleSheet, TextInput, Text, Image, View} from "react-native";
-import Buttons from "../Button/Button"
-
-
+import {SafeAreaView, StyleSheet, TextInput, View, Text} from "react-native";
+import  Buttons from "../Button/Button";
+//Usar dependencia data picker para o usuario escolher data de nascimento
 
 function handleButtonPress(){
     console.warn("CLICADO")
 }
 
-export default () =>  {
+export default () => {
     return(
     <SafeAreaView style={style.araeView}>
-        <Text style={style.titulo}>eSport<Text style={style.secondColorTittle}>fy</Text></Text>
+         <Text style={style.titulo}>eSport<Text style={style.secondColorTittle}>fy</Text></Text>
 
-        <TextInput style={style.inputText} placeholder="USERNAME" placeholderTextColor={"#7A7979"}/>
-        <TextInput style={style.inputText} secureTextEntry={true} placeholder="PASSWORD" placeholderTextColor={"#7A7979"}/>
-        <View style={style.buttonContainer}>
-            <Buttons title="login" onPress={handleButtonPress}/>
+        <TextInput style={style.inputText} placeholder="DIGITE SEU EMAIL" placeholderTextColor={"#7A7979"}/>
+        <TextInput style={style.inputText} placeholder="DIGITE SEU NOME" placeholderTextColor={"#7A7979"}/>
+        <TextInput style={style.inputText} placeholder="DIGITE SUA SENHA" placeholderTextColor={"#7A7979"}/>
+        <View  style={style.buttonContainer}>
+            <Buttons title="Cadastrar" onPress={handleButtonPress}/>
         </View>
-        
         <Text style={style.line}>_______________________________________________</Text>
-        <Image
-            source={require('../../../img/google.png')}
-            style={style.img}
-        />
-
         <Text style={style.noAccount}>Não tem conta? <Text style={style.registerColor}>Registre-se</Text></Text>
     </SafeAreaView>
     )
 }
 
+
+//STYLE
 const style = StyleSheet.create({
     araeView: {
         display: 'flex', 
@@ -50,6 +46,15 @@ const style = StyleSheet.create({
         paddingLeft: 12,
         borderRadius: 5,  
     },
+    buttons:{
+        gap: 10,
+        width: 200,
+        height:100,
+  
+    },
+    buttonContainer:{
+        paddingTop: 60,
+    },
     titulo:{
         color: "#51FC00",
         fontSize: 89,
@@ -65,20 +70,14 @@ const style = StyleSheet.create({
     line:{
         color:"#958C8C"
     },
-    img:{
-        height:40,
-        width:40,
-    },
-    registerColor:{
-        color : "#51FC00"
-    },
     noAccount:{
         position:  "absolute",
         paddingTop: 700,
         color: "#fff"
     },
-    buttonContainer:{
-        paddingTop: 60,
-    }
+    registerColor:{
+        color : "#51FC00"
+    },
+    
 
 });

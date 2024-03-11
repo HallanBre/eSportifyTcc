@@ -1,8 +1,8 @@
 
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { Image } from 'react-native';
 import ListaJogos from './components/ListaJogos';
 import LoginUsuario from './components/Login/LoginUsuario';
-import CadastroUsuario from './components/CadastroUsuario';
+import CadastroUsuario from './components/CadastroUsuario/CadastroUsuario';
 import AgendaJogos from './components/AgendaJogos';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
@@ -42,7 +42,7 @@ function MyTabs() {
 //container de navegação
 export default function App() {
   return(
-    <LoginUsuario/>
+    <CadastroUsuario/>
   );
 }
 

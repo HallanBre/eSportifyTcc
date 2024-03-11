@@ -2,19 +2,21 @@ import React from 'react'
 import {Text, TouchableOpacity, StyleSheet } from 'react-native'
 
 
-export function Buttons(props)  {
+export default Buttons = ({title, onPress}) => {
     return (
-        <TouchableOpacity  style={style.container} >
-            <Text style={style.title} onPress={props.onPress}>{props.text}</Text>
+        <TouchableOpacity onPress={onPress} style={style.container}  >
+                <Text  style={style.title}>{title}</Text>
         </TouchableOpacity>
     )
 }
 
+
 const style = StyleSheet.create({
     container: {
+        zIndex: 1,
         backgroundColor: "#47AE45",
-        alignContent: "center",
         justifyContent: "center",
+        alignItems: "center",
         borderRadius: 8,
         width: 228,
         height: 63,
@@ -24,7 +26,9 @@ const style = StyleSheet.create({
         color: "#2F2626",
         fontSize: 36,
         fontWeight: "500",
-        textAlign: "center",
+        textAlign: "center"
+        
+
         
     }
 })
