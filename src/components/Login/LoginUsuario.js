@@ -1,20 +1,43 @@
 import React from "react";
 import {SafeAreaView, StyleSheet, TextInput, Text, Image, View} from "react-native";
 import Buttons from "../Button/Button"
+import { useState } from "react";
 
 
 
 function handleButtonPress(){
-    console.warn("CLICADO")
+    sendForm();
 }
 
 export default () =>  {
+
+    const [user, setUser] = useState(null);
+    const [password, setPassword] = useState(null);
+    const [display, setDisplay] = useState(null);
+    const [login, setLogin] = useState(null);
+
+    //Envio formulario Login
+    async function sendForm()
+    {
+        let response = await fetch('http://192.168.3.16:8080/usuario/login', {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                username: user, 
+                password: password
+            })
+        })
+    }
+
     return(
     <SafeAreaView style={style.araeView}>
         <Text style={style.titulo}>eSport<Text style={style.secondColorTittle}>fy</Text></Text>
 
-        <TextInput style={style.inputText} placeholder="USERNAME" placeholderTextColor={"#7A7979"}/>
-        <TextInput style={style.inputText} secureTextEntry={true} placeholder="PASSWORD" placeholderTextColor={"#7A7979"}/>
+        <TextInput style={style.inputText} placeholder="USERNAME" placeholderTextColor={"#7A7979"} onChangeText={text=>setUser(text)}/>
+        <TextInput style={style.inputText} secureTextEntry={true} placeholder="PASSWORD" placeholderTextColor={"#7A7979"} onChangeText={text=>setPassword(text)}/>
         <View style={style.buttonContainer}>
             <Buttons title="login" onPress={handleButtonPress}/>
         </View>

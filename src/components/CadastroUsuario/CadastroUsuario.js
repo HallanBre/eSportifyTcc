@@ -8,13 +8,39 @@ function handleButtonPress(){
 }
 
 export default () => {
+
+    const [name, setName] = useState(null);
+    const [password, setPassword] = useState(null);
+    const [email, setEmail] = useState(null);
+    const [date, setDate] = useState(null);
+    const [display, setDisplay] = useState(null);
+    const [login, setLogin] = useState(null);
+
+
+    async function sendForm()
+    {
+        let response = await fetch('http://192.168.3.16:8080/usuario/cadastro', {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                username: user, 
+                password: password,
+                email: email,
+                date: date
+            })
+        })
+    }
+
     return(
     <SafeAreaView style={style.araeView}>
          <Text style={style.titulo}>eSport<Text style={style.secondColorTittle}>fy</Text></Text>
 
-        <TextInput style={style.inputText} placeholder="DIGITE SEU EMAIL" placeholderTextColor={"#7A7979"}/>
-        <TextInput style={style.inputText} placeholder="DIGITE SEU NOME" placeholderTextColor={"#7A7979"}/>
-        <TextInput style={style.inputText} placeholder="DIGITE SUA SENHA" placeholderTextColor={"#7A7979"}/>
+        <TextInput style={style.inputText} placeholder="DIGITE SEU EMAIL" placeholderTextColor={"#7A7979"} onChangeText={text=>setEmail(text)}/>
+        <TextInput style={style.inputText} placeholder="DIGITE SEU NOME" placeholderTextColor={"#7A7979"} onChangeText={text=>setName(text)}/>
+        <TextInput style={style.inputText} placeholder="DIGITE SUA SENHA" placeholderTextColor={"#7A7979"} onChangeText={text=>setPassword(text)}/>
         <View  style={style.buttonContainer}>
             <Buttons title="Cadastrar" onPress={handleButtonPress}/>
         </View>

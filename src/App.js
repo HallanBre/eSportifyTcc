@@ -6,6 +6,7 @@ import CadastroUsuario from './components/CadastroUsuario/CadastroUsuario';
 import AgendaJogos from './components/AgendaJogos';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
+import Quadras from './components/Quadras/Quadras';
 
 const Tab = createBottomTabNavigator();
 
@@ -42,7 +43,7 @@ function MyTabs() {
 //container de navegação
 export default function App() {
   return(
-    <CadastroUsuario/>
+    <LoginUsuario/>
   );
 }
 
