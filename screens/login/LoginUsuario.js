@@ -1,20 +1,13 @@
 import React from "react";
 import {SafeAreaView, StyleSheet, TextInput, Text, Image, View} from "react-native";
-import Buttons from "../Button/Button"
+import Buttons from "../../src/components/button/Button";
 import { useState } from "react";
 
 
 
-function handleButtonPress(){
-    sendForm();
-}
 
-export default () =>  {
 
-    const [user, setUser] = useState(null);
-    const [password, setPassword] = useState(null);
-    const [display, setDisplay] = useState(null);
-    const [login, setLogin] = useState(null);
+export default function LoginUsuario({navigation})  {
 
     //Envio formulario Login
     async function sendForm()
@@ -32,6 +25,29 @@ export default () =>  {
         })
     }
 
+    const handleButtonPress = () =>{
+        sendForm();
+        navigation.reset({
+            index: 0,
+            routes: [{name: 'ListaJogos'}]
+        })
+    }
+
+    const handleTextPress = () =>{
+        navigation.reset({
+            index: 0,
+            routes: [{name: 'CadastroUsuario'}]
+        })
+    }
+    
+
+    const [user, setUser] = useState(null);
+    const [password, setPassword] = useState(null);
+    const [display, setDisplay] = useState(null);
+    const [login, setLogin] = useState(null);
+
+    
+
     return(
     <SafeAreaView style={style.araeView}>
         <Text style={style.titulo}>eSport<Text style={style.secondColorTittle}>fy</Text></Text>
@@ -44,11 +60,10 @@ export default () =>  {
         
         <Text style={style.line}>_______________________________________________</Text>
         <Image
-            source={require('../../../img/google.png')}
+            source={require('../../img/google.png')}
             style={style.img}
         />
-
-        <Text style={style.noAccount}>Não tem conta? <Text style={style.registerColor}>Registre-se</Text></Text>
+            <Text style={style.noAccount} >Não tem conta? <Text style={style.registerColor} onPress={()=>handleTextPress()}>Registre-se</Text> </Text>
     </SafeAreaView>
     )
 }
@@ -62,7 +77,7 @@ const style = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         gap: 15,
-        paddingTop: 150,
+        paddingTop: 250,
     },
     inputText:{
         fontSize: 14,
@@ -96,8 +111,7 @@ const style = StyleSheet.create({
         color : "#51FC00"
     },
     noAccount:{
-        position:  "absolute",
-        paddingTop: 700,
+        marginTop: 125,
         color: "#fff"
     },
     buttonContainer:{

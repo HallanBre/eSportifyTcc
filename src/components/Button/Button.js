@@ -5,7 +5,7 @@ import {Text, TouchableOpacity, StyleSheet } from 'react-native'
 export default Buttons = ({title, onPress}) => {
     return (
         <TouchableOpacity onPress={onPress} style={style.container}  >
-                <Text  style={style.title}>{title}</Text>
+                <Text style={style.title}>{title}</Text>
         </TouchableOpacity>
     )
 }
@@ -18,8 +18,8 @@ const style = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         borderRadius: 8,
-        width: 228,
-        height: 63,
+        width: 350,
+        height: 60,
         
     },
     title: { 

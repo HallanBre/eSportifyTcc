@@ -1,51 +1,64 @@
 import React from "react";
 import {SafeAreaView, StyleSheet, TextInput, View, Text} from "react-native";
-import  Buttons from "../Button/Button";
+import Buttons from "../../src/components/button/Button";
+import { useState } from "react";
 //Usar dependencia data picker para o usuario escolher data de nascimento
 
-function handleButtonPress(){
-    console.warn("CLICADO")
-}
 
-export default () => {
+
+
+export default function CadastroUsuario({navigation})  {
+
+    const handleButtonPress = () =>{
+        sendForm();
+        navigation.reset({
+            index: 0,
+            routes: [{name: 'Login'}]
+        })
+    }
+
+    const handleTextPress = () =>{
+        navigation.reset({
+            index: 0,
+            routes: [{name: 'Login'}]
+        })
+    }
 
     const [name, setName] = useState(null);
     const [password, setPassword] = useState(null);
     const [email, setEmail] = useState(null);
     const [date, setDate] = useState(null);
-    const [display, setDisplay] = useState(null);
-    const [login, setLogin] = useState(null);
-
 
     async function sendForm()
     {
-        let response = await fetch('http://192.168.3.16:8080/usuario/cadastro', {
+        let response = await fetch("http://192.168.3.16:8080/usuario/cadastro", {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                username: user, 
+                name: name, 
                 password: password,
                 email: email,
                 date: date
-            })
+        })
         })
     }
 
     return(
     <SafeAreaView style={style.araeView}>
          <Text style={style.titulo}>eSport<Text style={style.secondColorTittle}>fy</Text></Text>
-
-        <TextInput style={style.inputText} placeholder="DIGITE SEU EMAIL" placeholderTextColor={"#7A7979"} onChangeText={text=>setEmail(text)}/>
-        <TextInput style={style.inputText} placeholder="DIGITE SEU NOME" placeholderTextColor={"#7A7979"} onChangeText={text=>setName(text)}/>
-        <TextInput style={style.inputText} placeholder="DIGITE SUA SENHA" placeholderTextColor={"#7A7979"} onChangeText={text=>setPassword(text)}/>
+         <Text>{name}-{password}-{email}-{date}</Text>
+        <TextInput style={style.inputText} placeholder="DIGITE SEU EMAIL" required placeholderTextColor={"#7A7979"} onChangeText={text=>setEmail(text)} />
+        <TextInput style={style.inputText} placeholder="DIGITE SEU NOME" required placeholderTextColor={"#7A7979"} onChangeText={text=>setName(text) }/>
+        <TextInput style={style.inputText} placeholder="DIGITE SUA SENHA" required placeholderTextColor={"#7A7979"} onChangeText={text=>setPassword(text)}/>
+        <TextInput style={style.inputText} placeholder="DIGITE DATA DE NASCIMENTO" required placeholderTextColor={"#7A7979"} onChangeText={text=>setDate(text)}/>
         <View  style={style.buttonContainer}>
-            <Buttons title="Cadastrar" onPress={handleButtonPress}/>
+            <Buttons title="Cadastrar" onPress={()=>handleButtonPress()}/>
         </View>
         <Text style={style.line}>_______________________________________________</Text>
-        <Text style={style.noAccount}>Não tem conta? <Text style={style.registerColor}>Registre-se</Text></Text>
+        <Text style={style.noAccount} onPress={()=>handleTextPress()}>Já tem conta? <Text style={style.registerColor}>Conecte-se</Text></Text>
     </SafeAreaView>
     )
 }
@@ -61,7 +74,7 @@ const style = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         gap: 15,
-        paddingTop: 150,
+        paddingTop: 250,
     },
     inputText:{
         fontSize: 14,
@@ -80,6 +93,7 @@ const style = StyleSheet.create({
     },
     buttonContainer:{
         paddingTop: 60,
+
     },
     titulo:{
         color: "#51FC00",
@@ -97,9 +111,8 @@ const style = StyleSheet.create({
         color:"#958C8C"
     },
     noAccount:{
-        position:  "absolute",
-        paddingTop: 700,
-        color: "#fff"
+        color: "#fff",
+        marginTop: 80,
     },
     registerColor:{
         color : "#51FC00"
