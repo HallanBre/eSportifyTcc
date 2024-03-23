@@ -5,21 +5,21 @@ import PartidasCard from "../../src/components/partidaCard/partidasCard";
 
 export default function () {
   const DATA = [
-    { id: 0, title: "Jogo 1", price: 10,  type: "basquete"},
-    { id: 1, title: "Jogo 1", price: 10, type: "futebol"},
-    { id: 2, title: "Jogo 2", price: 20, type: "futebol"},
-    { id: 3, title: "Jogo 3", price: 30,  type: "basquete" },
-    { id: 4, title: "Jogo 3", price: 30,  type: "basquete" },
-    { id: 5, title: "Jogo 3", price: 30,  type: "kart" },
-    { id: 6, title: "Jogo 3", price: 30,  type: "kart" },
-    { id: 7, title: "Jogo 3", price: 30,  type: "kart" },
-    { id: 8, title: "Jogo 3", price: 30,  type: "kart" },
-    { id: 9, title: "Jogo 3", price: 30, type: "volei"},
-    { id: 10, title: "Jogo 3", price: 30, type: "volei" },
-    { id: 11, title: "Jogo 1", price: 10, type: "volei"},
-    { id: 12, title: "Jogo 1", price: 10, type: "volei" },
-    { id: 13, title: "Jogo 1", price: 10, type: "volei" },
-    { id: 14, title: "Jogo 2", price: 10, type: "volei" },
+    { id: 0, title: "Ginásio UNIVINTE", price: 10,  type: "basquete"},
+    { id: 1, title: "Open Esporte", price: 10, type: "futebol"},
+    { id: 2, title: "Arena Summer", price: 20, type: "futebol"},
+    { id: 3, title: "Zofa", price: 30,  type: "basquete" },
+    { id: 4, title: "Zofa", price: 30,  type: "basquete" },
+    { id: 5, title: "Kart Santa Apolonia", price: 30,  type: "kart" },
+    { id: 6, title: "Kart Santa Apolonia", price: 30,  type: "kart" },
+    { id: 7, title: "Extreme Kart", price: 30,  type: "kart" },
+    { id: 8, title: "Extreme Kart", price: 30,  type: "kart" },
+    { id: 9, title: "Arena da Vila", price: 30, type: "volei"},
+    { id: 10, title: "Arena da Vila", price: 30, type: "volei" },
+    { id: 11, title: "AABB", price: 10, type: "volei"},
+    { id: 12, title: "Arena Summer", price: 10, type: "volei" },
+    { id: 13, title: "Open Esporte", price: 10, type: "volei" },
+    { id: 14, title: "Open Esporte", price: 10, type: "volei" },
   ];
   
   const Item = ({title}) => (
@@ -42,39 +42,32 @@ export default function () {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignContent: "center",
-    justifyContent: "center",
-    paddingTop: 75,
-    paddingBottom: 10,
+    paddingTop: 65,
+    paddingBottom: 80,
     backgroundColor: "#121212",	
-    
-    
   },
   item: {
     backgroundColor: '#282828',
     marginVertical: 1,
     paddingTop: 28,
-    alignContent: "center",
-    justifyContent: "center",
   },
-  title: {
-    fontSize: 32,
-  },
+  
   inputText:{
     fontSize: 14,
     backgroundColor: "#d9d9d9",
-    height: 43,
+    height: 50,
     width: 330,
-    zIndex: 1,
     paddingLeft: 12,
     marginLeft: "8%",
     borderRadius: 5,
-   
+    zIndex: 1,
 },
+
 backgroundInputText:{
   backgroundColor: "#121212",
-  height: 60,
+  height: 70,
   width: 400,
+  
 }
 
 });
