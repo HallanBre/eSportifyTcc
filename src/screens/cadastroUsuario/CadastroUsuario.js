@@ -1,6 +1,6 @@
 import React from "react";
 import {SafeAreaView, StyleSheet, TextInput, View, Text} from "react-native";
-import Buttons from "../../src/components/button/Button";
+import Buttons from "../../components/button/Button";
 import { useState } from "react";
 //Usar dependencia data picker para o usuario escolher data de nascimento
 

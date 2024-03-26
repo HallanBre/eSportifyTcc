@@ -1,6 +1,6 @@
 import React from "react";
 import {SafeAreaView, StyleSheet, TextInput, Text, Image, View} from "react-native";
-import Buttons from "../../src/components/button/Button";
+import Buttons from "../../components/button/Button";
 import { useState } from "react";
 
 
@@ -60,7 +60,7 @@ export default function LoginUsuario({navigation})  {
         
         <Text style={style.line}>_______________________________________________</Text>
         <Image
-            source={require('../../img/google.png')}
+            source={require('../../../img/google.png')}
             style={style.img}
         />
             <Text style={style.noAccount} >Não tem conta? <Text style={style.registerColor} onPress={()=>handleTextPress()}>Registre-se</Text> </Text>

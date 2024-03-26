@@ -1,10 +1,11 @@
 
 import { Image } from 'react-native';
-import ListaJogos from '../screens/listaJogos/ListaJogos';
-import LoginUsuario from '../screens/login/LoginUsuario';
-import CadastroUsuario from '../screens/cadastroUsuario/CadastroUsuario';
+import ListaJogos from '../src/screens/listaJogos/ListaJogos';
+import LoginUsuario from '../src/screens/login/LoginUsuario';
+import CadastroUsuario from '../src/screens/cadastroUsuario/CadastroUsuario';
 import AgendaJogos from './components/AgendaJogos';
-import Quadras from '../screens/quadras/Quadras';
+import Quadras from '../src/screens/quadras/Quadras';
+import JogadoresCard from './components/jogadoresCard/JogadoresCard';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -48,6 +49,7 @@ function MyStack(){
       <Stack.Screen options={{title: ''}} name="Login" component={LoginUsuario}/>
       <Stack.Screen options={{title: ''}} name="ListaJogos" component={ListaJogos}/>
       <Stack.Screen options={{title: ''}} name="Quadras" component={Quadras}/>
+      <Stack.Screen options={{title: ''}} name="jogadoresCard" component={JogadoresCard}/>
     </Stack.Navigator>
   );
 }
