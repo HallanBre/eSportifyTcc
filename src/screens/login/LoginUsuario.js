@@ -1,18 +1,14 @@
 import React from "react";
 import {SafeAreaView, StyleSheet, TextInput, Text, Image, View} from "react-native";
-import Buttons from "../../components/button/Button";
+import Buttons from "../../components/Button/Button";
 import { useState } from "react";
-
-
-
-
 
 export default function LoginUsuario({navigation})  {
 
     //Envio formulario Login
     async function sendForm()
     {
-        let response = await fetch('http://192.168.3.16:8080/usuario/login', {
+        let response = await fetch('http://192.168.3.16:8080/auth/login', {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
@@ -51,13 +47,11 @@ export default function LoginUsuario({navigation})  {
     return(
     <SafeAreaView style={style.araeView}>
         <Text style={style.titulo}>eSport<Text style={style.secondColorTittle}>fy</Text></Text>
-
         <TextInput style={style.inputText} placeholder="USERNAME" placeholderTextColor={"#7A7979"} onChangeText={text=>setUser(text)}/>
         <TextInput style={style.inputText} secureTextEntry={true} placeholder="PASSWORD" placeholderTextColor={"#7A7979"} onChangeText={text=>setPassword(text)}/>
         <View style={style.buttonContainer}>
             <Buttons title="login" onPress={handleButtonPress}/>
         </View>
-        
         <Text style={style.line}>_______________________________________________</Text>
         <Image
             source={require('../../../img/google.png')}

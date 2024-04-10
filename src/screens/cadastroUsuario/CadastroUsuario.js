@@ -1,6 +1,6 @@
 import React from "react";
 import {SafeAreaView, StyleSheet, TextInput, View, Text} from "react-native";
-import Buttons from "../../components/button/Button";
+import Buttons from "../../components/Button/Button";
 import { useState } from "react";
 //Usar dependencia data picker para o usuario escolher data de nascimento
 
@@ -18,6 +18,7 @@ export default function CadastroUsuario({navigation})  {
     }
 
     const handleTextPress = () =>{
+        sendForm()
         navigation.reset({
             index: 0,
             routes: [{name: 'Login'}]
@@ -29,22 +30,33 @@ export default function CadastroUsuario({navigation})  {
     const [email, setEmail] = useState(null);
     const [date, setDate] = useState(null);
 
-    async function sendForm()
-    {
-        let response = await fetch("http://192.168.3.16:8080/usuario/cadastro", {
+    async function sendForm() {
+        try {
+          let response = await fetch("http://192.168.3.16:8080/auth/cadastro", {
             method: 'POST',
             headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json'
+              Accept: 'application/json',
+              'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                name: name, 
-                password: password,
-                email: email,
-                date: date
-        })
-        })
-    }
+              name: name, 
+              password: password,
+              email: email,
+              date: date
+            })
+          });
+      
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          } else {
+            let data = await response.json();
+            console.log(data);
+            // Aqui você pode fazer algo com os dados recebidos, como atualizar o estado do componente
+          }
+        } catch (error) {
+          console.log('There was a problem with the fetch operation: ' + error.message);
+        }
+      }
 
     return(
     <SafeAreaView style={style.araeView}>

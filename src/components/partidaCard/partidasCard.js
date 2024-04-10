@@ -1,34 +1,34 @@
 import React from "react";
-import { View, StyleSheet, FlatList,Text, Image } from "react-native";
+import { View, StyleSheet, FlatList,Text, Image,TouchableOpacity } from "react-native";
 import { separatorItem } from "../separatorItem/SeparatorItem";
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-export default PartidasCard = ({DATA}) => { 
-
-  const handleButtonPress = () =>{
-    navigation.reset({
-        index: 0,
-        routes: [{name: 'jogadoresCard'}]
-    })
-}
-
-    const Item = ({title, type}) => (
-        <View style={styles.item} onPress={()=>handleTextPress()}>
+export default function PartidasCard  ({DATA, navigation})  { 
+ 
+    const Item = ({title, type, onPress, navigation}) => (
+        <TouchableOpacity style={styles.item} onPress={() => navigation.navigate('DescricaoJogo')} >
           <Text style={styles.title}>{title}</Text>
           <Icon name={type} size={100} color="white" style={styles.icon}/>
-          
-
-        </View>
+          <Text style={styles.participants}>08/12</Text>  
+          <Text style={styles.date}>18/10/2024</Text>
+        </TouchableOpacity>
       );
+     
 
     return (
         <View>
-        <FlatList 
-          ItemSeparatorComponent={separatorItem} 
-          data={DATA}
-          renderItem={({item}) => <Item title={item.title} type={item.type} />}
-          keyExtractor={item => item.id}
-       />
+          <FlatList 
+            ItemSeparatorComponent={separatorItem} 
+            data={DATA}
+            keyExtractor={item => item.id}
+            renderItem={({item}) => (
+            <Item
+              title={item.title}
+              type={item.type}
+              navigation={navigation}
+             />
+            )}
+          />
         </View>
     )
 }
@@ -52,6 +52,19 @@ const styles = StyleSheet.create({
         width: 100,
         height: 100,
     },
+      participants: {
+        marginLeft: 310,
+        fontSize: 16,
+        color: "#51FC00",
+        marginTop: -60 //<- Trocar depois
+      },
+      date: {
+        marginLeft: 120,
+        fontSize: 12,
+        color: "white",
+        position: "absolute",
+        paddingTop: 150
+      }
    
 
 })

@@ -3,7 +3,8 @@ import { SafeAreaView, StyleSheet, Text, View, FlatList,TextInput } from "react-
 import PartidasCard from "../../components/partidaCard/partidasCard";
 
 
-export default function () {
+export default function ({navigation}) {
+  
   const DATA = [
     { id: 0, title: "Ginásio UNIVINTE", price: 10,  type: "sports-basketball"},
     { id: 1, title: "Open Esporte", price: 10, type: "sports-volleyball"},
@@ -22,6 +23,7 @@ export default function () {
     { id: 14, title: "Open Esporte", price: 10, type: "sports-volleyball" },
   ];
   
+
   const Item = ({title}) => (
     <View style={styles.item}>
       <Text style={styles.title}>{title}</Text>
@@ -33,11 +35,12 @@ export default function () {
       <View style={styles.backgroundInputText}>
         <TextInput style={styles.inputText} placeholder="Pesquisar"/>
       </View>
-
-        <PartidasCard DATA={DATA}/>
+      <PartidasCard DATA={DATA}/>
     </SafeAreaView>
   );
-};
+}
+
+
 
 const styles = StyleSheet.create({
   container: {
