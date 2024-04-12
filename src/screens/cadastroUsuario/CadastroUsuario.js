@@ -1,7 +1,8 @@
 import React from "react";
-import {SafeAreaView, StyleSheet, TextInput, View, Text} from "react-native";
+import {SafeAreaView, StyleSheet, TextInput, View, Text, Alert} from "react-native";
 import Buttons from "../../components/Button/Button";
 import { useState } from "react";
+
 //Usar dependencia data picker para o usuario escolher data de nascimento
 
 
@@ -9,16 +10,32 @@ import { useState } from "react";
 
 export default function CadastroUsuario({navigation})  {
 
+    // event.preventDefault();
+    //     const { email, password } = this.state;
+
+    //     const response = await sendRegisterRequest(email, password);
+    //     const responseJson = await response.json();
+
+    //     if (response.status !== 200) {
+    //         this.setState({error: reponseJson.error});
+    //     } else {
+    //         // handle successful registration
+    //     }
+
     const handleButtonPress = () =>{
-        sendForm();
-        navigation.reset({
-            index: 0,
-            routes: [{name: 'Login'}]
-        })
-    }
+       if( name == "" || password == "" || email == "" || date == "" || name == null || password == null || email == null || date == null){
+            alert("Preencha todos os campos")}else
+        if(name.length < 3){
+            alert("Nome muito curto")}else{
+                sendForm();
+                
+            }
+}
+       
+        
+   
 
     const handleTextPress = () =>{
-        sendForm()
         navigation.reset({
             index: 0,
             routes: [{name: 'Login'}]
@@ -47,21 +64,29 @@ export default function CadastroUsuario({navigation})  {
           });
       
           if (!response.ok) {
+            alert("Email ja Cadastrado")
             throw new Error(`HTTP error! status: ${response.status}`);
+            
           } else {
+            navigation.reset({
+                index: 0,
+                routes: [{name: 'Login'}]
+            })
             let data = await response.json();
             console.log(data);
-            // Aqui você pode fazer algo com os dados recebidos, como atualizar o estado do componente
+            
           }
         } catch (error) {
           console.log('There was a problem with the fetch operation: ' + error.message);
+          
         }
-      }
+    }
+        
+      
 
     return(
     <SafeAreaView style={style.araeView}>
-         <Text style={style.titulo}>eSport<Text style={style.secondColorTittle}>fy</Text></Text>
-         <Text>{name}-{password}-{email}-{date}</Text>
+        <Text style={style.titulo}>eSport<Text style={style.secondColorTittle}>fy</Text></Text>
         <TextInput style={style.inputText} placeholder="DIGITE SEU EMAIL" required placeholderTextColor={"#7A7979"} onChangeText={text=>setEmail(text)} />
         <TextInput style={style.inputText} placeholder="DIGITE SEU NOME" required placeholderTextColor={"#7A7979"} onChangeText={text=>setName(text) }/>
         <TextInput style={style.inputText} placeholder="DIGITE SUA SENHA" required placeholderTextColor={"#7A7979"} onChangeText={text=>setPassword(text)}/>

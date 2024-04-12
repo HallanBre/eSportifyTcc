@@ -6,7 +6,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 export default function PartidasCard  ({DATA, navigation})  { 
  
     const Item = ({title, type, onPress, navigation}) => (
-        <TouchableOpacity style={styles.item} onPress={() => navigation.navigate('DescricaoJogo')} >
+        <TouchableOpacity style={styles.item}  >
           <Text style={styles.title}>{title}</Text>
           <Icon name={type} size={100} color="white" style={styles.icon}/>
           <Text style={styles.participants}>08/12</Text>  
