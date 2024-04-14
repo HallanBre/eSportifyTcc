@@ -6,8 +6,8 @@ import { useState } from "react";
 export default function LoginUsuario({navigation})  {
 
     //Envio formulario Login
-    async function sendForm()
-    {
+    async function sendForm(){
+        try{
         let response = await fetch('http://192.168.3.16:8080/auth/login', {
             method: 'POST',
             headers: {
@@ -15,19 +15,37 @@ export default function LoginUsuario({navigation})  {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                username: user, 
+                name: name, 
                 password: password
             })
-        })
+        });
+
+        if (!response.ok) {
+            alert("Usuário ou senha incorretos")
+            throw new Error(`HTTP error! status: ${response.status}`);
+            
+          } else {
+            navigation.reset({
+                index: 0,
+                routes: [{name: 'ListaJogos'}]
+            })
+            let data = await response.json();
+            console.log(data);
+            
+          }
+        } catch (error) {
+          console.log('There was a problem with the fetch operation: ' + error.message);
+          
+        }
     }
 
     const handleButtonPress = () =>{
-        sendForm();
-        navigation.reset({
-            index: 0,
-            routes: [{name: 'ListaJogos'}]
-        })
-    }
+        if( name == "" || password == "" || name == null || password == null){
+            alert("Preencha todos os campos")}else{
+                sendForm();
+            }
+        }
+    
 
     const handleTextPress = () =>{
         navigation.reset({
@@ -37,17 +55,16 @@ export default function LoginUsuario({navigation})  {
     }
     
 
-    const [user, setUser] = useState(null);
+    const [name, setName] = useState(null);
     const [password, setPassword] = useState(null);
-    const [display, setDisplay] = useState(null);
-    const [login, setLogin] = useState(null);
 
     
 
     return(
     <SafeAreaView style={style.araeView}>
+        <Text>{name}-{password}</Text>
         <Text style={style.titulo}>eSport<Text style={style.secondColorTittle}>fy</Text></Text>
-        <TextInput style={style.inputText} placeholder="USERNAME" placeholderTextColor={"#7A7979"} onChangeText={text=>setUser(text)}/>
+        <TextInput style={style.inputText} placeholder="USERNAME" placeholderTextColor={"#7A7979"} onChangeText={text=>setName(text)}/>
         <TextInput style={style.inputText} secureTextEntry={true} placeholder="PASSWORD" placeholderTextColor={"#7A7979"} onChangeText={text=>setPassword(text)}/>
         <View style={style.buttonContainer}>
             <Buttons title="login" onPress={handleButtonPress}/>

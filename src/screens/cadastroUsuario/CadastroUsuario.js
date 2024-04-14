@@ -46,6 +46,7 @@ export default function CadastroUsuario({navigation})  {
     const [password, setPassword] = useState(null);
     const [email, setEmail] = useState(null);
     const [date, setDate] = useState(null);
+    const [role, setRole] = useState("USER");
 
     async function sendForm() {
         try {
@@ -59,7 +60,8 @@ export default function CadastroUsuario({navigation})  {
               name: name, 
               password: password,
               email: email,
-              date: date
+              date: date,
+              role: role
             })
           });
       
