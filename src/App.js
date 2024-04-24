@@ -7,6 +7,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import DescricaoJogo from './screens/descricaoJogo/DescricaoJogo';
+import CadastroQuadra from './screens/cadastroQuadra/CadastroQuadra';
 
 
 const Tab = createBottomTabNavigator();
@@ -43,6 +44,7 @@ function MyTabs() {
 function MyStack(){
   return(
     <Stack.Navigator screenOptions={{headerTransparent : true}}>
+      <Stack.Screen options={{title: ''}} name="CadastroQuadra" component={CadastroQuadra}/>
       <Stack.Screen options={{title: ''}} name="Login" component={LoginUsuario}/>
       <Stack.Screen options={{title: ''}} name="CadastroUsuario" component={CadastroUsuario}/>
       <Stack.Screen options={{title: ''}} name="ListaJogos" component={ListaJogos}/>

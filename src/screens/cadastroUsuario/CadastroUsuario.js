@@ -10,17 +10,6 @@ import { useState } from "react";
 
 export default function CadastroUsuario({navigation})  {
 
-    // event.preventDefault();
-    //     const { email, password } = this.state;
-
-    //     const response = await sendRegisterRequest(email, password);
-    //     const responseJson = await response.json();
-
-    //     if (response.status !== 200) {
-    //         this.setState({error: reponseJson.error});
-    //     } else {
-    //         // handle successful registration
-    //     }
 
     const handleButtonPress = () =>{
        if( name == "" || password == "" || email == "" || date == "" || name == null || password == null || email == null || date == null){
@@ -50,7 +39,7 @@ export default function CadastroUsuario({navigation})  {
 
     async function sendForm() {
         try {
-          let response = await fetch("http://192.168.3.16:8080/auth/cadastro", {
+          let response = await fetch("http://10.10.221.169:8080/auth/cadastro", {
             method: 'POST',
             headers: {
               Accept: 'application/json',
@@ -61,7 +50,7 @@ export default function CadastroUsuario({navigation})  {
               password: password,
               email: email,
               date: date,
-              role: role
+              role: role,
             })
           });
       
@@ -91,8 +80,8 @@ export default function CadastroUsuario({navigation})  {
         <Text style={style.titulo}>eSport<Text style={style.secondColorTittle}>fy</Text></Text>
         <TextInput style={style.inputText} placeholder="DIGITE SEU EMAIL" required placeholderTextColor={"#7A7979"} onChangeText={text=>setEmail(text)} />
         <TextInput style={style.inputText} placeholder="DIGITE SEU NOME" required placeholderTextColor={"#7A7979"} onChangeText={text=>setName(text) }/>
-        <TextInput style={style.inputText} placeholder="DIGITE SUA SENHA" required placeholderTextColor={"#7A7979"} onChangeText={text=>setPassword(text)}/>
-        <TextInput style={style.inputText} placeholder="DIGITE DATA DE NASCIMENTO" required placeholderTextColor={"#7A7979"} onChangeText={text=>setDate(text)}/>
+        <TextInput style={style.inputText} placeholder="DIGITE SUA SENHA" secureTextEntry required placeholderTextColor={"#7A7979"} onChangeText={text=>setPassword(text)}/>
+        <TextInput style={style.inputText} placeholder="DIGITE DATA DE NASCIMENTO"  required placeholderTextColor={"#7A7979"} onChangeText={text=>setDate(text)}/>
         <View  style={style.buttonContainer}>
             <Buttons title="Cadastrar" onPress={()=>handleButtonPress()}/>
         </View>

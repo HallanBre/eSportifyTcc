@@ -8,7 +8,7 @@ export default function LoginUsuario({navigation})  {
     //Envio formulario Login
     async function sendForm(){
         try{
-        let response = await fetch('http://192.168.3.16:8080/auth/login', {
+        let response = await fetch('http://10.10.221.169:8080/auth/login', {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
@@ -62,7 +62,6 @@ export default function LoginUsuario({navigation})  {
 
     return(
     <SafeAreaView style={style.araeView}>
-        <Text>{name}-{password}</Text>
         <Text style={style.titulo}>eSport<Text style={style.secondColorTittle}>fy</Text></Text>
         <TextInput style={style.inputText} placeholder="USERNAME" placeholderTextColor={"#7A7979"} onChangeText={text=>setName(text)}/>
         <TextInput style={style.inputText} secureTextEntry={true} placeholder="PASSWORD" placeholderTextColor={"#7A7979"} onChangeText={text=>setPassword(text)}/>

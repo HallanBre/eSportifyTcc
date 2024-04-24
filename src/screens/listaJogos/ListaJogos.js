@@ -1,27 +1,11 @@
-import React from "react";
-import { SafeAreaView, StyleSheet, Text, View, FlatList,TextInput } from "react-native";
+import React, { useEffect } from "react";
+import { SafeAreaView, StyleSheet, Text, View,TextInput } from "react-native";
 import PartidasCard from "../../components/partidaCard/partidasCard";
 
 
+
 export default function ({navigation}) {
-  
-  const DATA = [
-    { id: 0, title: "Ginásio UNIVINTE", price: 10,  type: "sports-basketball"},
-    { id: 1, title: "Open Esporte", price: 10, type: "sports-volleyball"},
-    { id: 2, title: "Arena Summer", price: 20, type: "sports-volleyball"},
-    { id: 3, title: "Zofa", price: 30,  type: "sports-basketball" },
-    { id: 4, title: "Zofa", price: 30,  type: "sports-basketball" },
-    { id: 5, title: "Kart Santa Apolonia", price: 30,  type: "sports-motorsports" },
-    { id: 6, title: "Kart Santa Apolonia", price: 30,  type: "sports-motorsports" },
-    { id: 7, title: "Extreme Kart", price: 30,  type: "sports-motorsports" },
-    { id: 8, title: "Extreme Kart", price: 30,  type: "sports-motorsports" },
-    { id: 9, title: "Arena da Vila", price: 30, type: "sports-volleyball"},
-    { id: 10, title: "Arena da Vila", price: 30, type: "sports-volleyball" },
-    { id: 11, title: "AABB", price: 10, type: "sports-volleyball"},
-    { id: 12, title: "Arena Summer", price: 10, type: "sports-volleyball" },
-    { id: 13, title: "Open Esporte", price: 10, type: "sports-volleyball" },
-    { id: 14, title: "Open Esporte", price: 10, type: "sports-volleyball" },
-  ];
+ 
   
 
   const Item = ({title}) => (
@@ -35,7 +19,7 @@ export default function ({navigation}) {
       <View style={styles.backgroundInputText}>
         <TextInput style={styles.inputText} placeholder="Pesquisar"/>
       </View>
-      <PartidasCard DATA={DATA}/>
+      <PartidasCard/>
     </SafeAreaView>
   );
 }

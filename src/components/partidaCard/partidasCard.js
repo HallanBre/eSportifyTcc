@@ -1,34 +1,45 @@
 import React from "react";
-import { View, StyleSheet, FlatList,Text, Image,TouchableOpacity } from "react-native";
+import { View, StyleSheet, FlatList,Text,TouchableOpacity } from "react-native";
 import { separatorItem } from "../separatorItem/SeparatorItem";
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import axios from 'axios';
+import { useState, useEffect } from "react";
 
-export default function PartidasCard  ({DATA, navigation})  { 
+export default function PartidasCard  ({ navigation})  { 
+  const [data, setData] = useState([]);
+  
+  useEffect(() =>{
+    const fetchData = async () => {
+    try{
+      const response = await axios.get('http://10.10.221.169:8080/quadra/lista');
+      setData(response.data);
+    }catch(e){
+      console.log('Erro ao buscar  dados do back-end', e);
+    }
+  };
+
+  fetchData();
+}, []);
  
-    const Item = ({title, type, onPress, navigation}) => (
-        <TouchableOpacity style={styles.item}  >
-          <Text style={styles.title}>{title}</Text>
-          <Icon name={type} size={100} color="white" style={styles.icon}/>
-          <Text style={styles.participants}>08/12</Text>  
-          <Text style={styles.date}>18/10/2024</Text>
-        </TouchableOpacity>
-      );
+    const renderItem = ({ item }) => (
+      <TouchableOpacity style={styles.item} onPress={() => navigation.navigate('Detalhes', { itemId: item.id })}>
+        <Text style={styles.title}>{item.nome}</Text>
+        <Icon name={item.categoria.descricao} size={100} color="white" style={styles.icon}/>
+        <Text style={styles.valor}>{item.partida.valor}</Text>
+        <Text style={styles.participants}>0/{item.partida.numeroJogadores}</Text>  
+        <Text style={styles.date}>{item.partida.dataHora}</Text>
+      </TouchableOpacity>
+    );
      
 
     return (
         <View>
-          <FlatList 
-            ItemSeparatorComponent={separatorItem} 
-            data={DATA}
-            keyExtractor={item => item.id}
-            renderItem={({item}) => (
-            <Item
-              title={item.title}
-              type={item.type}
-              navigation={navigation}
-             />
-            )}
-          />
+         <FlatList  
+        ItemSeparatorComponent={separatorItem} 
+        data={data}
+        keyExtractor={item => item.id.toString()}
+        renderItem={renderItem}
+      />
         </View>
     )
 }
@@ -37,12 +48,12 @@ const styles = StyleSheet.create({
     item: {
         flex: 1,	
         backgroundColor: '#282828',
-        paddingTop: 18,
         paddingBottom: 80,
         justifyContent: "flex-start",
         
       },
       title: {
+        
         marginLeft: 120,
         fontSize: 23,
         color: "white",
@@ -54,7 +65,7 @@ const styles = StyleSheet.create({
     },
       participants: {
         marginLeft: 310,
-        fontSize: 16,
+        fontSize: 20,
         color: "#51FC00",
         marginTop: -60 //<- Trocar depois
       },
@@ -64,7 +75,12 @@ const styles = StyleSheet.create({
         color: "white",
         position: "absolute",
         paddingTop: 150
-      }
-   
-
+      },
+      valor: {
+        marginLeft: 120,
+        fontSize: 20,
+        color: "#51FC00",
+        position: "absolute",
+        paddingTop: 75
+      },
 })
