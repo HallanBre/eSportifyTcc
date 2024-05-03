@@ -5,26 +5,29 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import axios from 'axios';
 import { useState, useEffect } from "react";
 import {baseUrl} from "../../baseUrl/BaseUrl";
+import { useNavigation } from '@react-navigation/native';
 
-export default function PartidasCard  ({navigation})  { 
+export default function PartidasCard  ({})  { 
   const [data, setData] = useState([]);
   
   useEffect(() =>{
     const fetchData = async () => {
     try{
-      console.log(`Buscando dados do back-end ${baseUrl}`);
+      console.log(`Buscando dados do back-end ${baseUrl}/quadra/lista`);
+      
       const response = await axios.get(`${baseUrl}/quadra/lista`);
       setData(response.data);
     }catch(e){
       console.log('Erro ao buscar  dados do back-end', e);
     }
   };
-
   fetchData();
 }, []);
- 
+
+    const navigation = useNavigation();    
+
     const renderItem = ({ item }) => (
-      <TouchableOpacity style={styles.item} onPress={() => navigation.navigate('Detalhes', { itemId: item.id })}>
+      <TouchableOpacity style={styles.item} onPress={() => navigation.navigate('DescricaoJogo', { itemId: item.id })}>
         <Text style={styles.title}>{item.nome}</Text>
         <Icon name={item.categoria.descricao} size={100} color="white" style={styles.icon}/>
         <Text style={styles.valor}>R$: {Number(item.partida.valor).toFixed(2)}</Text>
@@ -41,6 +44,7 @@ export default function PartidasCard  ({navigation})  {
           data={data}
           keyExtractor={item => item.id.toString()}
           renderItem={renderItem}
+          
         />
         </View>
     )

@@ -2,7 +2,6 @@ import React from 'react'
 import {Text, View, StyleSheet,TouchableOpacity} from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import ButtonsCircle from '../../components/Button/ButtonCircle'
-import Icon from 'react-native-vector-icons/MaterialIcons';
 import JogadoresCard from '../../components/jogadoresCard/JogadoresCard';
 
 export default function ({navigation }){
@@ -22,7 +21,7 @@ export default function ({navigation }){
                 </TouchableOpacity>
                 <Text style={styles.nomeQuadra}>Nome Quadra</Text>
             </View>
-            <JogadoresCard USER={USER}/>
+            <JogadoresCard />
             
             
             

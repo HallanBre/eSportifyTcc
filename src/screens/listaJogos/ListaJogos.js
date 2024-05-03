@@ -3,10 +3,6 @@ import { SafeAreaView, StyleSheet, Text, View,TextInput } from "react-native";
 import PartidasCard from "../../components/partidaCard/partidasCard";
 
 
-
-
-
-
 export default function ({navigation}) {
   
 
