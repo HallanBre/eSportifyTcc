@@ -39,7 +39,7 @@ export default function CadastroUsuario({navigation})  {
 
     async function sendForm() {
         try {
-          let response = await fetch("http://10.10.221.169:8080/auth/cadastro", {
+          let response = await fetch(`${baseUrl}/auth/cadastro`, {
             method: 'POST',
             headers: {
               Accept: 'application/json',

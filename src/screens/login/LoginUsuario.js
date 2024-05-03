@@ -2,13 +2,14 @@ import React from "react";
 import {SafeAreaView, StyleSheet, TextInput, Text, Image, View} from "react-native";
 import Buttons from "../../components/Button/Button";
 import { useState } from "react";
+import {baseUrl} from "../../baseUrl/BaseUrl";
 
 export default function LoginUsuario({navigation})  {
 
     //Envio formulario Login
     async function sendForm(){
         try{
-        let response = await fetch('http://10.10.221.169:8080/auth/login', {
+        let response = await fetch(`${baseUrl}/auth/login`, {
             method: 'POST',
             headers: {
                 Accept: 'application/json',

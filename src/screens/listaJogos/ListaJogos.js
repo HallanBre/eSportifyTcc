@@ -4,8 +4,10 @@ import PartidasCard from "../../components/partidaCard/partidasCard";
 
 
 
+
+
+
 export default function ({navigation}) {
- 
   
 
   const Item = ({title}) => (

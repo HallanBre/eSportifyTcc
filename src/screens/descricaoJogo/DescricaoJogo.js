@@ -6,23 +6,6 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import JogadoresCard from '../../components/jogadoresCard/JogadoresCard';
 
 export default function ({navigation }){
-    const USER = [
-        { id: 1, name: "Hallan", idade: 20},
-        { id: 2, name: "Hallan", idade: 20},
-        { id: 3, name: "Hallan", idade: 20},
-        { id: 4, name: "Hallan", idade: 20},
-        { id: 5, name: "Hallan", idade: 20},
-        { id: 6, name: "Hallan", idade: 20},
-        { id: 7, name: "Hallan", idade: 20},
-        { id: 8, name: "Hallan", idade: 20 },
-        { id: 9, name: "Hallan", idade: 20},
-        { id: 10, name: "Hallan", idade: 20 },
-        { id: 11, name: "Hallan", idade: 20},
-        { id: 12, name: "Hallan", idade: 20},
-        { id: 13, name: "Hallan", idade: 20},
-        { id: 14, name: "Hallan", idade: 20},
-      ];
-
 
 
     const handleButtonPress = () =>{
