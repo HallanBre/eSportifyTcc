@@ -15,7 +15,7 @@ export default function PartidasCard  ({})  {
     try{
       console.log(`Buscando dados do back-end ${baseUrl}/quadra/lista`);
       
-      const response = await axios.get(`${baseUrl}/quadra/lista`);
+      const response = await axios.get(`${baseUrl}/partida/lista`);
       setData(response.data);
     }catch(e){
       console.log('Erro ao buscar  dados do back-end', e);
@@ -28,11 +28,11 @@ export default function PartidasCard  ({})  {
 
     const renderItem = ({ item }) => (
       <TouchableOpacity style={styles.item} onPress={() => navigation.navigate('DescricaoJogo', { itemId: item.id })}>
-        <Text style={styles.title}>{item.nome}</Text>
-        <Icon name={item.categoria.descricao} size={100} color="white" style={styles.icon}/>
-        <Text style={styles.valor}>R$: {Number(item.partida.valor).toFixed(2)}</Text>
-        <Text style={styles.participants}>0/{item.partida.numeroJogadores}</Text>  
-        <Text style={styles.date}>{item.partida.dataHora}</Text>
+        <Text style={styles.title}>{item.quadra.nome}</Text>
+        <Icon name={item.quadra.categoria.descricao} size={100} color="white" style={styles.icon}/>
+        <Text style={styles.valor}>R$: {Number(item.valor).toFixed(2)}</Text>
+        <Text style={styles.participants}>0/{item.numeroJogadores}</Text>  
+        <Text style={styles.date}>{item.dataHora}</Text>
       </TouchableOpacity>
     );
      
@@ -43,8 +43,7 @@ export default function PartidasCard  ({})  {
           ItemSeparatorComponent={separatorItem} 
           data={data}
           keyExtractor={item => item.id.toString()}
-          renderItem={renderItem}
-          
+          renderItem={renderItem}  
         />
         </View>
     )

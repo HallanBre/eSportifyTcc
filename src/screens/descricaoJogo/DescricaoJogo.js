@@ -3,9 +3,10 @@ import {Text, View, StyleSheet,TouchableOpacity} from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import ButtonsCircle from '../../components/Button/ButtonCircle'
 import JogadoresCard from '../../components/jogadoresCard/JogadoresCard';
+import DescricaoPartidaCard from '../../components/descricaoPartidaCard/DescricaoPartidaCard';
 
-export default function ({navigation }){
-
+export default function DescricaoJogo({route,navigation}){
+    const {itemId} = route.params;
 
     const handleButtonPress = () =>{
         navigation.reset({
@@ -21,7 +22,9 @@ export default function ({navigation }){
                 </TouchableOpacity>
                 <Text style={styles.nomeQuadra}>Nome Quadra</Text>
             </View>
+            <DescricaoPartidaCard itemId={itemId}/>
             <JogadoresCard />
+            
             
             
             
@@ -36,7 +39,6 @@ const styles = StyleSheet.create({
         
     },
     header:{
-
         backgroundColor: '#121212',
         height:90,
         width: "100%",
