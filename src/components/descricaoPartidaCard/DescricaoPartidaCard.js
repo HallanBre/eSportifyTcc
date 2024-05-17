@@ -23,8 +23,8 @@ export default function DescricaoPartidaCard({itemId}) {
       
     return (
         <View style={styles.item}>
+           {data?.quadra && <Icon name={data.quadra.categoria.descricao} size={100} color="white" style={styles.icon}/>}
             <Text style={styles.title}>{data.descricao}</Text>
-            {data?.quadra && <Icon name={data.quadra.categoria.descricao} size={100} color="white" style={styles.icon}/>}
             <Text style={styles.valor}>R$: {Number(data.valor).toFixed(2)}</Text>
             <Text style={styles.date}>{data.dataHora}</Text>
             
@@ -40,9 +40,12 @@ const styles = StyleSheet.create({
         justifyContent: "flex-start",
       },
       title: {  
-        marginLeft: 120,
-        fontSize: 23,
+        paddingTop: 20,
+        paddingLeft: 120,
+        fontSize: 16,
         color: "white",
+        position: "absolute",
+        
         
       },
       icon: {
@@ -60,13 +63,13 @@ const styles = StyleSheet.create({
         fontSize: 12,
         color: "white",
         position: "absolute",
-        paddingTop: 150
+        paddingTop: 127
       },
       valor: {
-        marginLeft: 120,
+        marginLeft: 250,
         fontSize: 20,
         color: "#51FC00",
         position: "absolute",
-        paddingTop: 75
+        paddingTop: 120
       },
 })

@@ -56,9 +56,10 @@ const styles = StyleSheet.create({
         paddingBottom: 120,
         justifyContent: "flex-start",
         
+        
       },
       title: {
-        
+        marginTop: 15,
         marginLeft: 120,
         fontSize: 23,
         color: "white",
@@ -86,6 +87,6 @@ const styles = StyleSheet.create({
         fontSize: 20,
         color: "#51FC00",
         position: "absolute",
-        paddingTop: 75
+        paddingTop: 85
       },
 })

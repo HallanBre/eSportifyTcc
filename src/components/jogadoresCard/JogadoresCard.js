@@ -37,10 +37,13 @@ export default JogadoresCard = () =>{
         data={USER_DATA}
         keyExtractor={item => item.id}
         renderItem={({ item }) => <Item name={item.name} idade={item.idade} />}
-      />
-        <View style={styles.buttonContainer}>
+        ListFooterComponent={
+          <View style={styles.buttonContainer}>
             <Buttons title="Entrar na partida" />
-        </View>
+          </View>
+        }
+      />
+
     </View>
     
     )
@@ -71,7 +74,7 @@ const styles = StyleSheet.create({
         
       },
       buttonContainer:{
-        
+        alignItems: 'center',
     }
       
 

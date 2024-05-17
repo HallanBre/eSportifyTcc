@@ -63,7 +63,7 @@ export default function LoginUsuario({navigation})  {
 
     return(
     <SafeAreaView style={style.araeView}>
-        <Text style={style.titulo}>eSport<Text style={style.secondColorTittle}>fy</Text></Text>
+        <Text style={style.titulo}>eSport<Text style={style.secondColorTittle}>Fy</Text></Text>
         <TextInput style={style.inputText} placeholder="USERNAME" placeholderTextColor={"#7A7979"} onChangeText={text=>setName(text)}/>
         <TextInput style={style.inputText} secureTextEntry={true} placeholder="PASSWORD" placeholderTextColor={"#7A7979"} onChangeText={text=>setPassword(text)}/>
         <View style={style.buttonContainer}>

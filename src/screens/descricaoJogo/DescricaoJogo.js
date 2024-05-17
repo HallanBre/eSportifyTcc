@@ -1,33 +1,18 @@
 import React from 'react'
-import {Text, View, StyleSheet,TouchableOpacity} from 'react-native'
+import {StyleSheet} from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import ButtonsCircle from '../../components/Button/ButtonCircle'
+
 import JogadoresCard from '../../components/jogadoresCard/JogadoresCard';
 import DescricaoPartidaCard from '../../components/descricaoPartidaCard/DescricaoPartidaCard';
 
 export default function DescricaoJogo({route,navigation}){
     const {itemId} = route.params;
 
-    const handleButtonPress = () =>{
-        navigation.reset({
-            index: 0,
-            routes: [{name: 'ListaJogos'}]
-        })
-    }
+    
     return (
-        <SafeAreaView style={styles.container}>
-            <View style={styles.header}>
-                <TouchableOpacity style={styles.buttonLoc}>
-                    <ButtonsCircle onPress={handleButtonPress}/>
-                </TouchableOpacity>
-                <Text style={styles.nomeQuadra}>Nome Quadra</Text>
-            </View>
-            <DescricaoPartidaCard itemId={itemId}/>
-            <JogadoresCard />
-            
-            
-            
-            
+        <SafeAreaView style={styles.container}>    
+                <DescricaoPartidaCard itemId={itemId}/>
+                <JogadoresCard /> 
         </SafeAreaView>
     )
 }

@@ -2,6 +2,8 @@ import React from "react";
 import {SafeAreaView, StyleSheet, TextInput, View, Text, Alert} from "react-native";
 import Buttons from "../../components/Button/Button";
 import { useState } from "react";
+import { baseUrl } from "../../baseUrl/BaseUrl";
+import MaskInput, { Masks } from 'react-native-mask-input';
 
 //Usar dependencia data picker para o usuario escolher data de nascimento
 
@@ -34,7 +36,7 @@ export default function CadastroUsuario({navigation})  {
     const [name, setName] = useState(null);
     const [password, setPassword] = useState(null);
     const [email, setEmail] = useState(null);
-    const [date, setDate] = useState(null);
+    const [date, setDate] = useState("");
     const [role, setRole] = useState("USER");
 
     async function sendForm() {
@@ -68,7 +70,7 @@ export default function CadastroUsuario({navigation})  {
             
           }
         } catch (error) {
-          console.log('There was a problem with the fetch operation: ' + error.message);
+          console.log('There was a problem with the fetch operation ' + error.message);
           
         }
     }
@@ -77,11 +79,11 @@ export default function CadastroUsuario({navigation})  {
 
     return(
     <SafeAreaView style={style.araeView}>
-        <Text style={style.titulo}>eSport<Text style={style.secondColorTittle}>fy</Text></Text>
+        <Text style={style.titulo}>eSport<Text style={style.secondColorTittle}>Fy</Text></Text>
         <TextInput style={style.inputText} placeholder="DIGITE SEU EMAIL" required placeholderTextColor={"#7A7979"} onChangeText={text=>setEmail(text)} />
         <TextInput style={style.inputText} placeholder="DIGITE SEU NOME" required placeholderTextColor={"#7A7979"} onChangeText={text=>setName(text) }/>
         <TextInput style={style.inputText} placeholder="DIGITE SUA SENHA" secureTextEntry required placeholderTextColor={"#7A7979"} onChangeText={text=>setPassword(text)}/>
-        <TextInput style={style.inputText} placeholder="DIGITE DATA DE NASCIMENTO"  required placeholderTextColor={"#7A7979"} onChangeText={text=>setDate(text)}/>
+        <MaskInput style={style.inputText} value={date} onChangeText={setDate} mask={Masks.DATE_DDMMYYYY} keyboardType="numeric"/>
         <View  style={style.buttonContainer}>
             <Buttons title="Cadastrar" onPress={()=>handleButtonPress()}/>
         </View>
