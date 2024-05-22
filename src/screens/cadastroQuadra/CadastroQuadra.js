@@ -60,6 +60,8 @@ export default function CadastroQuadra(){
       fetchData();
     }, []);
 
+    
+
 
     //ENVIAR OS DADOS ----------------------------------------
     async function sendForm() {
@@ -108,7 +110,7 @@ export default function CadastroQuadra(){
                 />
             </View>
             <View style={style.select}>
-                <SelectList
+                  <SelectList
                     setSelected={(val) => setEmpresa(val)}
                     boxStyles={{width:330, backgroundColor:'#d9d9d9'}}
                     dropdownStyles={{backgroundColor:'#d9d9d9'}}
@@ -116,8 +118,19 @@ export default function CadastroQuadra(){
                     searchPlaceholder='selecione uma empresa'
                     data={dataEmpresa}
                     save="key"
-                />
-            </View>
+                  />
+                </View>
+                <View style={style.select}>
+                  <SelectList
+                    setSelected={(val) => setEmpresa(val)}
+                    boxStyles={{width:330, backgroundColor:'#d9d9d9'}}
+                    dropdownStyles={{backgroundColor:'#d9d9d9'}}
+                    placeholder='selecione uma endereço'
+                    searchPlaceholder='selecione um endereço'
+                    data={dataEmpresa}
+                    save="key"
+                  />
+                </View>
             <View  style={style.buttonContainer}>
                 <Buttons title="Cadastrar" onPress={()=>handleButtonPress()}/>
             </View>

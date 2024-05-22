@@ -37,7 +37,7 @@ export default function CadastroUsuario({navigation})  {
     const [password, setPassword] = useState(null);
     const [email, setEmail] = useState(null);
     const [date, setDate] = useState("");
-    const [role, setRole] = useState("USER");
+    const [role, setRole] = useState("ADMIN");
 
     async function sendForm() {
         try {

@@ -26,11 +26,20 @@ export default function LoginUsuario({navigation})  {
             throw new Error(`HTTP error! status: ${response.status}`);
             
           } else {
-            navigation.reset({
-                index: 0,
-                routes: [{name: 'ListaJogos'}]
-            })
+            console.log('Success:', response.status);
             let data = await response.json();
+            if(data.token.role == "ADMIN"){
+                navigation.reset({
+                    index: 0,
+                    routes: [{name: 'CadastroQuadra'}]
+                })
+            }else if(data.token.role == "USER"){
+                navigation.reset({
+                    index: 0,
+                    routes: [{name: 'ListaJogos'}]
+            })
+        }
+            
             console.log(data);
             
           }
