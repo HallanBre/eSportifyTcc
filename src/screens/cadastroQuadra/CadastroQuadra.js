@@ -1,26 +1,40 @@
 import React from 'react'
-import {Text,SafeAreaView,View,StyleSheet,TextInput} from 'react-native'
+import {SafeAreaView,View,StyleSheet,TextInput,Text} from 'react-native'
 import { useState, useEffect } from "react";
 import Buttons from "../../components/Button/Button";
 import { SelectList } from 'react-native-dropdown-select-list'
 import axios from 'axios';
 import {baseUrl} from "../../baseUrl/BaseUrl";
+import { Dropdown } from 'react-native-element-dropdown';
 
-export default function CadastroQuadra(){
+export default function CadastroQuadra({navigation}){
+
+        
+  
 
     const handleButtonPress = () =>{
-        if( name == "" || categoria == "" || name == null || categoria == null){
+        if( name == "" || categoria == "" || endereco =="" || name == null || categoria == null || endereco == null || detalheEndereco == "" || detalheEndereco == null){
              alert("Preencha todos os campos")}else{
                  sendForm();
              }
  }
 
+
+   const handleNavigation = () =>{ 
+    navigation.reset({
+      index: 0,
+      routes: [{name: 'Login'}]
+    }) 
+  }
+
     const [name, setName] = useState(null);
     const [categoria, setCategoria] = useState(null);
     const [empresa, setEmpresa] = useState(null);
+    const [endereco, setEndereco] = useState(null);
+    const [detalheEndereco, setDetalheEndereco] = useState(null);
     const [data, setData] = useState(null);
     const [dataEmpresa, setDataEmpresa] = useState(null);
-    const [selected, setSelected] = React.useState("");
+    const [dataEndereco, setDataEndereco] = useState([]);
 
     //PUXAR OS DADOS CATEGORIA ----------------------------------------
     useEffect(() =>{
@@ -40,6 +54,7 @@ export default function CadastroQuadra(){
     
       fetchData();
     }, []);
+    
 
     //PUXAR OS DADOS EMPRESA ----------------------------------------
     useEffect(() =>{
@@ -51,6 +66,7 @@ export default function CadastroQuadra(){
                 return {key:item.id, value:item.nome}
               })
               setDataEmpresa(newArray)
+              
             })
         }catch(e){
           console.log('Erro ao buscar  dados do back-end', e);
@@ -59,6 +75,22 @@ export default function CadastroQuadra(){
     
       fetchData();
     }, []);
+
+
+    //DADOS DE MUNICIPIO ----------------------------------------
+    useEffect(() => {
+      const fetchData = async () => {
+        // Substitua isso pela sua chamada de API
+        const response = await fetch(`${baseUrl}/endereco/lista`);
+        const arrayEnd = await response.json();
+        if (arrayEnd !== dataEndereco) {
+          setDataEndereco(arrayEnd);
+          
+        }
+      };
+    
+      fetchData();
+    }, [endereco]); 
 
     
 
@@ -74,8 +106,11 @@ export default function CadastroQuadra(){
             },
         body: JSON.stringify({
             nome: name, 
+            detalheEndereco: detalheEndereco,
             categoria: { id: categoria },
-            empresa: { id: empresa }
+            empresa: { id: empresa },
+            endereco: { id: endereco },
+            
         })
       });
   
@@ -98,6 +133,7 @@ export default function CadastroQuadra(){
     return (
         <SafeAreaView style={style.container}>
             <TextInput style={style.inputText} placeholder="Nome da Quadra" required placeholderTextColor={"#7A7979"} onChangeText={text=>setName(text)}/>
+            <TextInput style={style.inputText} placeholder="Detalhes do Endereço" required placeholderTextColor={"#7A7979"} onChangeText={text=>setDetalheEndereco(text)}/>
             <View style={style.select}>
                 <SelectList
                     setSelected={(val) => setCategoria(val)}
@@ -110,29 +146,42 @@ export default function CadastroQuadra(){
                 />
             </View>
             <View style={style.select}>
-                  <SelectList
-                    setSelected={(val) => setEmpresa(val)}
+                <SelectList
+                    setSelected={(val) => {console.log(empresa) ; setEmpresa(val)}}
                     boxStyles={{width:330, backgroundColor:'#d9d9d9'}}
                     dropdownStyles={{backgroundColor:'#d9d9d9'}}
                     placeholder='selecione uma empresa'
                     searchPlaceholder='selecione uma empresa'
                     data={dataEmpresa}
                     save="key"
-                  />
-                </View>
-                <View style={style.select}>
-                  <SelectList
-                    setSelected={(val) => setEmpresa(val)}
-                    boxStyles={{width:330, backgroundColor:'#d9d9d9'}}
-                    dropdownStyles={{backgroundColor:'#d9d9d9'}}
-                    placeholder='selecione uma endereço'
-                    searchPlaceholder='selecione um endereço'
-                    data={dataEmpresa}
-                    save="key"
-                  />
-                </View>
+                />
+            </View>
+
+            
+            <View style={style.select}>
+              
+                <Dropdown
+                    placeholderStyle={style.placeholderStyle}
+                    selectedTextStyle={style.selectedTextStyle}
+                    style={style.dropdown}
+                    maxHeight={300}
+                    data={dataEndereco}
+                    labelField={"nome"}
+                    valueField={"id"}
+                    onChange={(val) => {setEndereco(val.id); }}
+                    value={endereco}
+                    search
+                    searchPlaceHolder="Procurar"
+                    placeholder="Selecione um municipio"
+                    
+                />
+                
+            </View>
             <View  style={style.buttonContainer}>
                 <Buttons title="Cadastrar" onPress={()=>handleButtonPress()}/>
+            </View>
+            <View  style={style.buttonContainer}>
+                <Buttons title="Sair" onPress={()=>handleNavigation()}/>
             </View>
 
         </SafeAreaView>
@@ -157,9 +206,28 @@ const style = StyleSheet.create({
         zIndex: 1,
         paddingLeft: 12,
         borderRadius: 5,
+        marginTop:20,
          
     },
     select:{
         paddingTop: 20,
-    }
+    },
+    dropdown: {
+      height: 50,
+      width: 330,
+      borderColor: 'gray',
+      borderWidth: 0.5,
+      borderRadius: 8,
+      paddingHorizontal: 8,
+      backgroundColor: '#d9d9d9',
+      color: 'black',
+    },
+    selectedTextStyle: {
+      fontSize: 16,
+      color: 'black',
+    },
+    placeholderStyle: {
+      fontSize: 16,
+      color: 'black',
+    },
 })
