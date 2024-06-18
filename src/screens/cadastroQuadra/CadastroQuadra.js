@@ -80,7 +80,6 @@ export default function CadastroQuadra({navigation}){
     //DADOS DE MUNICIPIO ----------------------------------------
     useEffect(() => {
       const fetchData = async () => {
-        // Substitua isso pela sua chamada de API
         const response = await fetch(`${baseUrl}/endereco/lista`);
         const arrayEnd = await response.json();
         if (arrayEnd !== dataEndereco) {
@@ -157,9 +156,7 @@ export default function CadastroQuadra({navigation}){
                 />
             </View>
 
-            
             <View style={style.select}>
-              
                 <Dropdown
                     placeholderStyle={style.placeholderStyle}
                     selectedTextStyle={style.selectedTextStyle}

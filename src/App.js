@@ -4,6 +4,7 @@ import ListaJogos from '../src/screens/listaJogos/ListaJogos';
 import LoginUsuario from '../src/screens/login/LoginUsuario';
 import CadastroUsuario from '../src/screens/cadastroUsuario/CadastroUsuario';
 import CadastroQuadra from './screens/cadastroQuadra/CadastroQuadra';
+import CadastroPartida from './screens/cadastroPartida/CadastroPartida';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -46,11 +47,13 @@ function MyTabs() {
 function MyStack(){
   return(
     <Stack.Navigator screenOptions={{headerTransparent : true}}>
+      <Stack.Screen options={{title: ''}} name="CadastroPartida" component={CadastroPartida}/>
       <Stack.Screen options={{title: ''}} name="Login" component={LoginUsuario}/>
       <Stack.Screen options={{title: ''}} name="ListaJogos" component={ListaJogos}/>
       <Stack.Screen options={{title: ''}} name="DescricaoJogo" component={DescricaoJogo}/>
       <Stack.Screen options={{title: ''}} name="CadastroUsuario" component={CadastroUsuario}/>
       <Stack.Screen options={{title: ''}} name="CadastroQuadra" component={CadastroQuadra}/>
+      
     </Stack.Navigator>
   );
 }
