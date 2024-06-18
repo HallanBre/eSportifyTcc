@@ -104,7 +104,6 @@ const style = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         gap: 15,
-        paddingTop: 250,
     },
     inputText:{
         fontSize: 14,
@@ -115,27 +114,23 @@ const style = StyleSheet.create({
         paddingLeft: 12,
         borderRadius: 5,  
     },
-    buttons:{
-        gap: 10,
-        width: 200,
-        height:100,
-  
-    },
+    
     buttonContainer:{
-        paddingTop: 60,
+        paddingTop: 50,
 
     },
     titulo:{
-        color: "#51FC00",
+        color: "#FFF",
         fontSize: 89,
         fontWeight:"bold",
         fontFamily:"Roboto",
-        paddingBottom: 480,
-        position: "absolute"
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
         
     },
     secondColorTittle:{
-        color: "#fff"
+        color: "#f48322"
     },
     line:{
         color:"#958C8C"
@@ -145,7 +140,7 @@ const style = StyleSheet.create({
         marginTop: 80,
     },
     registerColor:{
-        color : "#51FC00"
+        color : "#f48322"
     },
     
 

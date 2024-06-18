@@ -30,11 +30,13 @@ const styles = StyleSheet.create({
     paddingTop: 65,
     paddingBottom: 80,
     backgroundColor: "#121212",	
+    
   },
   item: {
     backgroundColor: '#282828',
     marginVertical: 1,
     paddingTop: 28,
+    
   },
   
   inputText:{

@@ -47,10 +47,11 @@ function MyStack(){
   return(
     <Stack.Navigator screenOptions={{headerTransparent : true}}>
       <Stack.Screen options={{title: ''}} name="Login" component={LoginUsuario}/>
-      <Stack.Screen options={{title: ''}} name="ListaJogos" component={ListaJogos}/>
       <Stack.Screen options={{title: ''}} name="DescricaoJogo" component={DescricaoJogo}/>
-      <Stack.Screen options={{title: ''}} name="CadastroUsuario" component={CadastroUsuario}/>
+      <Stack.Screen options={{title: ''}} name="ListaJogos" component={ListaJogos}/>
       <Stack.Screen options={{title: ''}} name="CadastroQuadra" component={CadastroQuadra}/>
+      <Stack.Screen options={{title: ''}} name="CadastroUsuario" component={CadastroUsuario}/>
+      
     </Stack.Navigator>
   );
 }
@@ -63,9 +64,3 @@ export default function App() {
     </NavigationContainer>
   );
 }
-
-
-
-
-
-

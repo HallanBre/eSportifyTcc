@@ -145,6 +145,9 @@ const style = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#282828',
+        display: 'flex',
+        justifyContent:'center',
+        alignItems: 'center',
     },
     buttonContainer:{
         paddingTop: 60,

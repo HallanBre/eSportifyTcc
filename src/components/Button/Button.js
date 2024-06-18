@@ -14,7 +14,7 @@ export default Buttons = ({title, onPress}) => {
 const style = StyleSheet.create({
     container: {
         zIndex: 1,
-        backgroundColor: "#47AE45",
+        backgroundColor: "#f48322",
         justifyContent: "center",
         alignItems: "center",
         borderRadius: 8,
@@ -23,12 +23,10 @@ const style = StyleSheet.create({
         
     },
     title: { 
-        color: "#2F2626",
+        color: "#000",
         fontSize: 36,
         fontWeight: "500",
         textAlign: "center"
-        
-
         
     }
 })
