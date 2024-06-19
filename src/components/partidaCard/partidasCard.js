@@ -9,12 +9,14 @@ import { useNavigation } from '@react-navigation/native';
 
 export default function PartidasCard  ({})  { 
   const [data, setData] = useState([]);
+  const [dataQuadra, setDataQuadra] = useState([]);
   
   useEffect(() =>{
     const fetchData = async () => {
     try{
-      console.log(`Buscando dados do back-end ${baseUrl}/quadra/lista`);
-      
+      console.log(`Buscando dados do back-end ${baseUrl}/partida/lista`);
+      setDataQuadra(await axios.get(`${baseUrl}/quadra/lista`));
+
       const response = await axios.get(`${baseUrl}/partida/lista`);
       setData(response.data);
     }catch(e){
@@ -33,7 +35,9 @@ export default function PartidasCard  ({})  {
         <Text style={styles.valor}>R$: {Number(item.valor).toFixed(2)}</Text>
         <Text style={styles.participants}>0/{item.numeroJogadores}</Text>  
         <Text style={styles.date}>{item.dataHora}</Text>
+        
       </TouchableOpacity>
+      
     );
      
 
