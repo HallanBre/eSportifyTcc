@@ -186,45 +186,29 @@ export default function CadastroQuadra({navigation}){
     
 }
 const style = StyleSheet.create({
-    container:{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#282828',
-    },
-    buttonContainer:{
-        paddingTop: 60,
-    },
-    inputText:{
-        fontSize: 14,
-        backgroundColor: "#d9d9d9",
-        height: 43,
-        width: 330,
-        zIndex: 1,
-        paddingLeft: 12,
-        borderRadius: 5,
-        marginTop:20,
-         
-    },
-    select:{
-        paddingTop: 20,
-    },
-    dropdown: {
-      height: 50,
-      width: 330,
-      borderColor: 'gray',
-      borderWidth: 0.5,
-      borderRadius: 8,
-      paddingHorizontal: 8,
-      backgroundColor: '#d9d9d9',
-      color: 'black',
-    },
-    selectedTextStyle: {
-      fontSize: 16,
-      color: 'black',
-    },
-    placeholderStyle: {
-      fontSize: 16,
-      color: 'black',
-    },
+  container:{
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#282828',
+    display: 'flex',
+    justifyContent:'center',
+    alignItems: 'center',
+},
+buttonContainer:{
+    paddingTop: 60,
+},
+inputText:{
+    fontSize: 14,
+    backgroundColor: "#d9d9d9",
+    height: 43,
+    width: 330,
+    zIndex: 1,
+    paddingLeft: 12,
+    borderRadius: 5,
+     
+},
+select:{
+    paddingTop: 20,
+}
 })

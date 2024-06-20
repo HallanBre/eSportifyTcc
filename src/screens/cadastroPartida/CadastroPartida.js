@@ -44,6 +44,7 @@ export default function CadastroPartida()  {
     //ENVIO DE FORMULARIO PARA O BACKEND 
     async function sendForm() {
       try {
+          console.log(quadra)
           let response = await fetch(`${baseUrl}/partida/salvar`, {
           method: 'POST',
           headers: {
@@ -56,7 +57,7 @@ export default function CadastroPartida()  {
           numeroJogadores: numeroJogadores,
           tempoPartida: tempoPartida,
           valor: valor,
-          quadra: quadra,
+          quadra: {id: quadra},
           
       })
     });
@@ -94,7 +95,7 @@ export default function CadastroPartida()  {
                     data={dataQuadra}
                     labelField={"value"}
                     valueField={"key"}
-                    onChange={(val) => {setQuadra(val.key); }}
+                    onChange={(val) => {setQuadra(parseInt(val.key)); }}
                     value={quadra}
                     search
                     searchPlaceHolder="Procurar"

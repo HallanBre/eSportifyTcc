@@ -90,52 +90,50 @@ export default function LoginUsuario({navigation})  {
 
 const style = StyleSheet.create({
     araeView: {
-        display: 'flex', 
-        backgroundColor: "#181818",
+        backgroundColor: "#000000",
         flexGrow: 1,
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
         gap: 15,
-        paddingTop: 250,
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
     },
     inputText:{
         fontSize: 14,
-        backgroundColor: "#d9d9d9",
+        backgroundColor: "#cecece",
         height: 43,
         width: 330,
         zIndex: 1,
         paddingLeft: 12,
         borderRadius: 5,  
-    },
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        },
     titulo:{
-        color: "#51FC00",
+        color: "#FFF",
         fontSize: 89,
         fontWeight:"bold",
         fontFamily:"Roboto",
-        paddingBottom: 480,
-        position: "absolute"
-        
+        display: 'flex',
+        flexDirection: 'center',
+        alignItems: 'center',
+        margin: 15
     },
     secondColorTittle:{
-        color: "#fff"
+        color: "#f48322"
     },
     line:{
-        color:"#958C8C"
-    },
-    img:{
-        height:40,
-        width:40,
+        color:"#cecece",
     },
     registerColor:{
-        color : "#51FC00"
+        color : "#f48322"
     },
     noAccount:{
         marginTop: 125,
-        color: "#fff"
+        color: "#FFF"
     },
     buttonContainer:{
-        paddingTop: 60,
+        marginTop: 20,
     }
 
 });
