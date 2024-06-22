@@ -28,12 +28,12 @@ export default function LoginUsuario({navigation})  {
           } else {
             console.log('Success:', response.status);
             let data = await response.json();
-            if(data.token.role == "ADMIN"){
+            if(data.user.role == "ADMIN"){
                 navigation.reset({
                     index: 0,
                     routes: [{name: 'CadastroQuadra'}]
                 })
-            }else if(data.token.role == "USER"){
+            }else if(data.user.role == "USER"){
                 navigation.reset({
                     index: 0,
                     routes: [{name: 'ListaJogos'}]
@@ -79,10 +79,7 @@ export default function LoginUsuario({navigation})  {
             <Buttons title="login" onPress={handleButtonPress}/>
         </View>
         <Text style={style.line}>_______________________________________________</Text>
-        <Image
-            source={require('../../../img/google.png')}
-            style={style.img}
-        />
+       
             <Text style={style.noAccount} >Não tem conta? <Text style={style.registerColor} onPress={()=>handleTextPress()}>Registre-se</Text> </Text>
     </SafeAreaView>
     )
