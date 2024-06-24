@@ -36,7 +36,7 @@ useEffect(() => {
       const userInfos = await Promise.all(
         dataUsuario.usuario.map((usuario) =>
           axios
-            .get(`${baseUrl}/usuario/buscaId/${dataUsuario.usuario}`) // Ajuste para enviar um único ID
+            .get(`${baseUrl}/usuario/buscaId/${usuario}`) // Ajuste para enviar um único ID
             .then((response) => response.data)
         )
       );
