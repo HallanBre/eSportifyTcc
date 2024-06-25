@@ -35,7 +35,7 @@ export default function PartidasCard  ({})  {
       <TouchableOpacity style={styles.item} onPress={() => navigation.navigate('DescricaoJogo', { itemId: item.id })}>
         <Text style={styles.title}>{item.quadra.nome}</Text>
         <Icon name={item.quadra.categoria?.descricao} size={100} color="white" style={styles.icon}/>
-        <Text style={styles.valor}>R$: {Number(item.valor).toFixed(2)}</Text>
+        <Text style={styles.valor}>R$: {parseFloat(item.valor).toFixed(2).replace('.', ',')}</Text>
         <Text style={styles.participants}>0/{item.numeroJogadores}</Text>  
         <Text style={styles.date}>{item.dataHora}</Text>
         
@@ -59,41 +59,45 @@ export default function PartidasCard  ({})  {
 
 const styles = StyleSheet.create({
     item: {
-        flex: 1,	
+        position: "relative",
         backgroundColor: '#282828',
-        paddingBottom: 120,
-        justifyContent: "flex-start",
-        
-        
+        height: 180,
+        width: '100%',
+        display: "flex",
+
       },
       title: {
-        marginTop: 15,
+        position: "relative",
         marginLeft: 120,
+        marginTop: 20,
         fontSize: 23,
         color: "white",
-        
       },
       icon: {
         width: 100,
         height: 100,
-    },
+      
+      },
       participants: {
         marginLeft: 310,
         fontSize: 20,
-        color: "#51FC00",
+        color: "#f48322",
         marginTop: -60 //<- Trocar depois
       },
       date: {
-        marginLeft: 120,
+        position: "relative",
         fontSize: 12,
         color: "white",
-        position: "absolute",
-        paddingTop: 150
+        display: "flex",
+        alignItems: "flex-end",
+        justifyContent: "flex-end",
+        paddingTop: 25,
+        paddingLeft: 120,
       },
       valor: {
         marginLeft: 120,
         fontSize: 20,
-        color: "#51FC00",
+        color: "#f48322",
         position: "absolute",
         paddingTop: 85
       },

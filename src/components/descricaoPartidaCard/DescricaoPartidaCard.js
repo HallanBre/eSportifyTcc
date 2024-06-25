@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
       icon: {
         width: 100,
         height: 100,
+        
     },
       participants: {
         marginLeft: 310,

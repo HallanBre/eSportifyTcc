@@ -178,7 +178,7 @@ export default function CadastroQuadra({navigation}){
                 <Buttons title="Cadastrar" onPress={()=>handleButtonPress()}/>
             </View>
             <View  style={style.buttonContainer}>
-                <Buttons title="Sair" onPress={()=>handleNavigation()}/>
+                <Buttons title="Voltar" onPress={()=>handleNavigation()}/>
             </View>
 
         </SafeAreaView>
@@ -188,27 +188,34 @@ export default function CadastroQuadra({navigation}){
 const style = StyleSheet.create({
   container:{
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: '#282828',
     display: 'flex',
     justifyContent:'center',
     alignItems: 'center',
 },
 buttonContainer:{
-    paddingTop: 60,
+    paddingTop: 20,
+    width: 330,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
 },
 inputText:{
-    fontSize: 14,
-    backgroundColor: "#d9d9d9",
-    height: 43,
     width: 330,
-    zIndex: 1,
-    paddingLeft: 12,
-    borderRadius: 5,
-     
+    height: 45,
+    backgroundColor: '#d9d9d9',
+    borderRadius: 10,
+    paddingLeft: 10,
+    color: '#7A7979',
+    display: 'flex',
+    justifyContent: 'center',
+    gap: 10,
+    marginTop: 10,
 },
 select:{
-    paddingTop: 20,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 10,
 }
 })

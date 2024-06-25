@@ -106,17 +106,50 @@ export default function CadastroPartida()  {
             <View  style={style.buttonContainer}>
                 <Buttons title="Cadastrar" onPress={()=>handleButtonPress()}/>
             </View>
+            <View  style={style.buttonContainer}>
+                <Buttons title="Voltar" onPress={()=>handleNavigation()}/>
+            </View>
 
         </SafeAreaView>
   )
 }
 
 const style = StyleSheet.create({
+  
   container:{
     flex: 1,
-    justifyContent: 'center',
-    padding: 20
-    
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 15,
+    backgroundColor: '#282828',
+  },
+  inputText:{
+    width: 330,
+    height: 40,
+    backgroundColor: '#d9d9d9',
+    borderRadius: 10,
+    paddingLeft: 10,
+    color: '#7A7979',
+  },
+  select:{
+    width: 330,
+    height: 40,
+    backgroundColor: '#d9d9d9',
+    borderRadius: 10,
+    paddingLeft: 10,
+    color: '#7A7979',
+  },
+  selectedTextStyle:{
+    color: '#7A7979',
+  },
+  dropdown:{
+    width: 330,
+    height: 40,
+    backgroundColor: '#d9d9d9',
+    borderRadius: 10,
+    paddingLeft: 10,
+    color: '#7A7979',
   },
 
 })
