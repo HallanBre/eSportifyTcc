@@ -98,7 +98,7 @@ export default function CadastroUsuario({navigation})  {
 const style = StyleSheet.create({
     araeView: {
         display: 'flex', 
-        backgroundColor: "#181818",
+        backgroundColor: "#000000",
         flexGrow: 1,
         flexDirection: 'column',
         alignItems: 'center',
@@ -107,7 +107,7 @@ const style = StyleSheet.create({
     },
     inputText:{
         fontSize: 14,
-        backgroundColor: "#d9d9d9",
+        backgroundColor: "#cecece",
         height: 43,
         width: 330,
         zIndex: 1,

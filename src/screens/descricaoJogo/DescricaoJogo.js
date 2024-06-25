@@ -11,8 +11,8 @@ export default function DescricaoJogo({route,navigation}){
     
     return (
         <SafeAreaView style={styles.container}>    
-                <DescricaoPartidaCard itemId={itemId}/>
-                <JogadoresCard itemId={itemId} /> 
+            <DescricaoPartidaCard itemId={itemId}/>
+            <JogadoresCard itemId={itemId} navigation={navigation} /> 
         </SafeAreaView>
     )
 }

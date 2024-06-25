@@ -18,7 +18,7 @@ const style = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         borderRadius: 8,
-        width: 365, //era 365
+        width: 345, //era 365
         height: 60,
         
     },

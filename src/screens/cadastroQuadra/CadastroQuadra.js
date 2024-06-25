@@ -26,6 +26,12 @@ export default function CadastroQuadra({navigation}){
       routes: [{name: 'Login'}]
     }) 
   }
+  const handleNavigationPartida = () =>{ 
+    navigation.reset({
+      index: 0,
+      routes: [{name: 'CadastroPartida'}]
+    }) 
+  }
 
     const [name, setName] = useState(null);
     const [categoria, setCategoria] = useState(null);
@@ -119,7 +125,7 @@ export default function CadastroQuadra({navigation}){
       } else {
         navigation.reset({
             index: 0,
-            routes: [{name: 'ListaJogos'}]
+            routes: [{name: 'CadastroPartida'}]
         }) //MUDAR PARA UM VIZUALIZADOR DE QUADRAS CADASTRADAS PELA EMPRESA
         let data = await response.json();
         console.log(data);
@@ -156,7 +162,7 @@ export default function CadastroQuadra({navigation}){
                 />
             </View>
 
-            <View style={style.select}>
+            <View style={style.municipio}>
                 <Dropdown
                     placeholderStyle={style.placeholderStyle}
                     selectedTextStyle={style.selectedTextStyle}
@@ -178,7 +184,10 @@ export default function CadastroQuadra({navigation}){
                 <Buttons title="Cadastrar" onPress={()=>handleButtonPress()}/>
             </View>
             <View  style={style.buttonContainer}>
-                <Buttons title="Sair" onPress={()=>handleNavigation()}/>
+                <Buttons title="Cadastrar Partida" onPress={()=>handleNavigationPartida()}/>
+            </View>
+            <View  style={style.buttonContainer}>
+                <Buttons title="Sairr" onPress={()=>handleNavigation()}/>
             </View>
 
         </SafeAreaView>
@@ -188,27 +197,58 @@ export default function CadastroQuadra({navigation}){
 const style = StyleSheet.create({
   container:{
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: '#282828',
     display: 'flex',
     justifyContent:'center',
     alignItems: 'center',
 },
 buttonContainer:{
-    paddingTop: 60,
+    paddingTop: 20,
+    width: 330,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
 },
 inputText:{
-    fontSize: 14,
-    backgroundColor: "#d9d9d9",
-    height: 43,
     width: 330,
-    zIndex: 1,
-    paddingLeft: 12,
-    borderRadius: 5,
-     
+    height: 45,
+    backgroundColor: '#d9d9d9',
+    borderRadius: 10,
+    paddingLeft: 10,
+    color: '#7A7979',
+    display: 'flex',
+    justifyContent: 'center',
+    gap: 10,
+    marginTop: 10,
 },
 select:{
-    paddingTop: 20,
-}
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 10,
+},
+municipio:{
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  marginTop: 10,
+},
+selectedTextStyle: {
+  fontSize: 16,
+  color: 'black',
+},
+placeholderStyle: {
+  fontSize: 16,
+  color: 'black',
+},
+dropdown: {
+  height: 50,
+  width: 330,
+  borderColor: 'gray',
+  borderWidth: 0.5,
+  borderRadius: 8,
+  paddingHorizontal: 8,
+  backgroundColor: '#d9d9d9',
+  color: 'black',
+},
 })

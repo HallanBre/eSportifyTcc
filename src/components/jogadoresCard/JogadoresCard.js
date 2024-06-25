@@ -6,21 +6,36 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { baseUrl } from "../../baseUrl/BaseUrl";
 
-//itemId é o id da partida
+
 export default JogadoresCard = ({ itemId, navigation }) => {
+
   const [dataUsuario, setDataUsuario] = useState([]);
   const [dadosUsuario, setDadosUsuario] = useState([]);
+  const [session, setSession] = useState();
 
   const handleButtonPress = () => {
     sendForm();
   };
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const response = await axios.get(`${baseUrl}/auth/session`);
+        setSession(response.data);
+        console.log("USUARIO NA SESSÃO:", session);
+      } catch (e) {
+        console.log("Erro ao SESSAO", e);
+      }
+    };
+    fetchUser();
+  }, []);
 
   //USUARIOS LOGADOS
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`${baseUrl}/partida/buscar/${itemId}`);
-        setDataUsuario(response.data); // Atualiza o estado com os dados recebidos
+        setDataUsuario(response.data);
       } catch (e) {
         console.log("Erro ao buscar dados do back-end", e);
       }
@@ -28,31 +43,27 @@ export default JogadoresCard = ({ itemId, navigation }) => {
     fetchData();
   }, []);
 
-//BUSCA OS USUARIOS QUE ESTAO NA PARTIDA
-useEffect(() => {
-  const fetchUserInfos = async () => {
-    try {
-      // Mapeia cada ID de usuário para uma requisição de fetch e aguarda todas as respostas
-      const userInfos = await Promise.all(
-        dataUsuario.usuario.map((usuario) =>
-          axios
-            .get(`${baseUrl}/usuario/buscaId/${usuario}`) // Ajuste para enviar um único ID
-            .then((response) => response.data)
-        )
-      );
-      console.log("Informações dos usuários:", userInfos);
-      // Atualize o estado ou a variável com as informações dos usuários aqui, se necessário
-      setDadosUsuario(userInfos);
-      console.log("Dados dos usuários:", dadosUsuario); // Removido o await
-    } catch (e) {
-      console.log("Erro ao buscar dados dos usuários", e);
-    }
-  };
+  //BUSCA OS USUARIOS QUE ESTAO NA PARTIDA
+  useEffect(() => {
+    const fetchUserInfos = async () => {
+      try {
+        const userInfos = await Promise.all(
+          dataUsuario.usuario.map((usuario) =>
+            axios
+              .get(`${baseUrl}/usuario/buscaId/${usuario}`)
+              .then((response) => response.data)
+          )
+        );
+        console.log("Dados dos usuários:", userInfos);
+        setDadosUsuario(userInfos);
+      } catch (e) {
+        console.log("Erro ao buscar dados dos usuários", e);
+      }
+    };
 
-  fetchUserInfos();
-}, [dataUsuario]);
+    fetchUserInfos();
+  }, [dataUsuario]);
 
-  //ENVIAR O DADO DO USUARIO ID PARA O BACKEND
   async function sendForm() {
     try {
       let response = await fetch(`${baseUrl}/partida/participar/${itemId}`, {
@@ -80,29 +91,37 @@ useEffect(() => {
     }
   }
 
-
-
-  //VERIFICAR SE AQUI ESTA CORRETO DEPOIS DE APLICAR AS FUNCIONALIDADES DA SESSAO
- const Item = ({ item }) => ( // Change `dadosUsuario` to `item` to match the expected structure
-  <View style={styles.item}>
-    <Text style={styles.name}>{item.name}</Text> 
-    <Text style={styles.idade}>{item.date} anos</Text> 
-  </View>
-);
+  const Item = ({ item }) => {
+    const birthDateParts = item.date.split('/');
+    const birthDate = new Date(birthDateParts[2], birthDateParts[1] - 1, birthDateParts[0]);
+    const currentDate = new Date();
+    let age = currentDate.getFullYear() - birthDate.getFullYear();
+    if (currentDate.getMonth() < birthDate.getMonth() || 
+        (currentDate.getMonth() === birthDate.getMonth() && currentDate.getDate() < birthDate.getDate())) {
+      age--;
+    }
+    return (
+      <View style={styles.item}>
+        <Text style={styles.name}>{item.name}</Text>
+        <Text style={styles.idade}>{age} anos</Text>
+      </View>
+    );
+  };
   const dadosAchatados = dadosUsuario.flat();
 
-  // Dentro do seu componente que contém o FlatList
   return (
     <View style={styles.container}>
       <FlatList
         ItemSeparatorComponent={separatorItem}
         data={dadosAchatados}
-        keyExtractor={(item) =>item.id.toString()}
+        keyExtractor={(item) => item.id.toString()}
         renderItem={Item}
-        
         ListFooterComponent={
           <View style={styles.buttonContainer}>
-            <Buttons title="Entrar na partida" onPress={()=>handleButtonPress()}/>
+            <Buttons
+              title="Entrar na partida"
+              onPress={() => handleButtonPress()}
+            />
           </View>
         }
       />

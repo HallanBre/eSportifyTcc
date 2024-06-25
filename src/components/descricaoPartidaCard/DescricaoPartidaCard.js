@@ -25,7 +25,7 @@ export default function DescricaoPartidaCard({itemId}) {
         <View style={styles.item}>
            {data?.quadra && <Icon name={data.quadra.categoria.descricao} size={100} color="white" style={styles.icon}/>}
             <Text style={styles.title}>{data.descricao}</Text>
-            <Text style={styles.valor}>R$: {Number(data.valor).toFixed(2)}</Text>
+            <Text style={styles.valor}>R$: {parseFloat(data.valor).toFixed(2).replace('.', ',')}</Text>
             <Text style={styles.date}>{data.dataHora}</Text>
             
         </View>
@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
       icon: {
         width: 100,
         height: 100,
+        
     },
       participants: {
         marginLeft: 310,
@@ -68,7 +69,7 @@ const styles = StyleSheet.create({
       valor: {
         marginLeft: 250,
         fontSize: 20,
-        color: "#51FC00",
+        color: "#f48322",
         position: "absolute",
         paddingTop: 120
       },

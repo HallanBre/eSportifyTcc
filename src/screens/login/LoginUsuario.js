@@ -112,7 +112,7 @@ const style = StyleSheet.create({
         fontWeight:"bold",
         fontFamily:"Roboto",
         display: 'flex',
-        flexDirection: 'center',
+        justifyContent: 'center',
         alignItems: 'center',
         margin: 15
     },
