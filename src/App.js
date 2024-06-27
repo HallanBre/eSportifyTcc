@@ -5,6 +5,7 @@ import LoginUsuario from '../src/screens/login/LoginUsuario';
 import CadastroUsuario from '../src/screens/cadastroUsuario/CadastroUsuario';
 import CadastroQuadra from './screens/cadastroQuadra/CadastroQuadra';
 import CadastroPartida from './screens/cadastroPartida/CadastroPartida';
+import LogoutScreen from './screens/logout/Logout';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -38,19 +39,18 @@ function MyTabs() {
             source={require('../img/Agenda.png')
             }/>
           ),
-          tabBarLabel: "agenda"
+          tabBarLabel: "Agenda"
         }} 
       />
-       <Tab.Screen name="Logout" component={LoginUsuario} options={{
-        tabBarIcon: () =>(
-          <Image
-            style= {{width:30, height:30, marginTop:5, marginLeft:5}}
-            source={require('../img/Agenda.png')
-            }/>
-          ),
-          tabBarLabel: "agenda"
-        }} 
-      />
+       <Tab.Screen name="Logout" component={LogoutScreen} options={{
+  tabBarIcon: () => (
+    <Image
+      style={{width:30, height:30, marginTop:5, marginLeft:5}}
+      source={require('../img/logout.png')}
+    />
+    ),
+    tabBarLabel: "Logout"
+    }} />
       
     </Tab.Navigator>
   );
@@ -66,6 +66,7 @@ function MyStack(){
       <Stack.Screen options={{title: ''}} name="DescricaoJogo" component={DescricaoJogo}/>
       <Stack.Screen options={{title: ''}} name="CadastroUsuario" component={CadastroUsuario}/> 
       <Stack.Screen options={{title: ''}} name="ListaAgenda" component={ListaAgenda}/>
+      
     </Stack.Navigator>
   );
 }
