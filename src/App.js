@@ -10,6 +10,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import DescricaoJogo from './screens/descricaoJogo/DescricaoJogo';
 import 'react-native-gesture-handler';
+import ListaAgenda from './screens/listaAgenda/ListaAgenda';
 
 
 
@@ -30,7 +31,7 @@ function MyTabs() {
          tabBarLabel: "home"
         }}
       />
-      <Tab.Screen name="Login" component={LoginUsuario} options={{
+      <Tab.Screen name="ListaAgenda" component={ListaAgenda} options={{
         tabBarIcon: () =>(
           <Image
             style= {{width:30, height:30, marginTop:5, marginLeft:5}}
@@ -40,6 +41,17 @@ function MyTabs() {
           tabBarLabel: "agenda"
         }} 
       />
+       <Tab.Screen name="Logout" component={LoginUsuario} options={{
+        tabBarIcon: () =>(
+          <Image
+            style= {{width:30, height:30, marginTop:5, marginLeft:5}}
+            source={require('../img/Agenda.png')
+            }/>
+          ),
+          tabBarLabel: "agenda"
+        }} 
+      />
+      
     </Tab.Navigator>
   );
 }
@@ -49,12 +61,11 @@ function MyStack(){
     <Stack.Navigator screenOptions={{headerTransparent : true}}>
       <Stack.Screen options={{title: ''}} name="Login" component={LoginUsuario}/>
       <Stack.Screen options={{title: ''}} name="CadastroPartida" component={CadastroPartida}/>
-      <Stack.Screen options={{title: ''}} name="ListaJogos" component={ListaJogos}/>
+      <Stack.Screen options={{title: ''}} name="ListaJogos" component={MyTabs}/>
       <Stack.Screen options={{title: ''}} name="CadastroQuadra" component={CadastroQuadra}/>
       <Stack.Screen options={{title: ''}} name="DescricaoJogo" component={DescricaoJogo}/>
-      <Stack.Screen options={{title: ''}} name="CadastroUsuario" component={CadastroUsuario}/>
-      
-      
+      <Stack.Screen options={{title: ''}} name="CadastroUsuario" component={CadastroUsuario}/> 
+      <Stack.Screen options={{title: ''}} name="ListaAgenda" component={ListaAgenda}/>
     </Stack.Navigator>
   );
 }

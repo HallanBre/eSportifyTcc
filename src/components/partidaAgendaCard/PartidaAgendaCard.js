@@ -9,16 +9,14 @@ import { useNavigation } from '@react-navigation/native';
 
 export default function PartidasCard  ({})  { 
   const [data, setData] = useState([]);
-  const [dataQuadra, setDataQuadra] = useState([]);
+  
   
   useEffect(() =>{
     const fetchData = async () => {
     try{
-      console.log(`Buscando dados do back-end ${baseUrl}/partida/lista`);
-      setDataQuadra(await axios.get(`${baseUrl}/quadra/lista`));
-      console.log(await dataQuadra)
+      console.log(`Buscando dados do back-end ${baseUrl}/partida/partidasUsuario`);
 
-      const response = await axios.get(`${baseUrl}/partida/lista`);
+      const response = await axios.get(`${baseUrl}/partida/partidasUsuario`);
       setData(response.data);
 
       console.log('Dados do back-end', data);
