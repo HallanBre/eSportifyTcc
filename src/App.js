@@ -18,40 +18,50 @@ import ListaAgenda from './screens/listaAgenda/ListaAgenda';
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
-//botões de navegação inferior
+//botões de navegação inferior Screen Options\
 function MyTabs() {
   return (
-    <Tab.Navigator screenOptions={{headerTransparent : true, title: "", tabBarActiveTintColor: '#000'}}>
-      <Tab.Screen name="Lista Jogos"  component={ListaJogos} options={{
+    <Tab.Navigator 
+      screenOptions={{
+        headerTransparent: true,
+        title: "",
+        tabBarActiveTintColor: '#f48322', // Cor do ícone e texto quando ativo
+        tabBarInactiveTintColor: '#f48322', // Cor do texto quando inativo
+        tabBarStyle: { backgroundColor: '#000' },
+        tabBarLabelStyle: { color: '#f48322' }, // Adiciona esta linha para definir a cor do texto
+      }}>
+      <Tab.Screen name="Lista Jogos" component={ListaJogos} options={{
         tabBarIcon: () => (
           <Image
-            style={{ width: 30, height: 30}}
-            source={require('../img/homeIcon.png')
-          }/>
-         ),
-         tabBarLabel: "home"
-        }}
+            style={{ width: 30, height: 30 }}
+            tintColor={'#f48322'}
+            source={require('../img/homeIcon.png')}
+          />
+        ),
+        tabBarLabel: "home"
+      }}
       />
       <Tab.Screen name="ListaAgenda" component={ListaAgenda} options={{
-        tabBarIcon: () =>(
+        tabBarIcon: () => (
           <Image
-            style= {{width:30, height:30, marginTop:5, marginLeft:5}}
-            source={require('../img/Agenda.png')
-            }/>
-          ),
-          tabBarLabel: "Agenda"
-        }} 
+            style={{ width: 30, height: 30, marginTop: 5, marginLeft: 5 }}
+            tintColor={'#f48322'}
+            source={require('../img/Agenda.png')}
+          />
+        ),
+        tabBarLabel: "Agenda"
+      }} 
       />
-       <Tab.Screen name="Logout" component={LogoutScreen} options={{
-  tabBarIcon: () => (
-    <Image
-      style={{width:30, height:30, marginTop:5, marginLeft:5}}
-      source={require('../img/logout.png')}
-    />
-    ),
-    tabBarLabel: "Logout"
-    }} />
-      
+      <Tab.Screen name="Logout" component={LogoutScreen} options={{
+        tabBarIcon: () => (
+          <Image
+            style={{ width: 30, height: 30, marginTop: 5, marginLeft: 5 }}
+            tintColor={'#f48322'}
+            source={require('../img/logout.png')}
+          />
+        ),
+        tabBarLabel: "Logout"
+      }} />
     </Tab.Navigator>
   );
 }
