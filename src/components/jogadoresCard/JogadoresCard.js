@@ -22,9 +22,8 @@ export default JogadoresCard = ({ itemId, navigation }) => {
       try {
         const response = await axios.get(`${baseUrl}/auth/session`);
         setSession(response.data);
-        console.log("USUARIO NA SESSÃO:", session);
       } catch (e) {
-        console.log("Erro ao SESSAO", e);
+        console.log("Erro SESSAO", e);
       }
     };
     fetchUser();
@@ -73,7 +72,6 @@ export default JogadoresCard = ({ itemId, navigation }) => {
           "Content-Type": "application/json",
         },
       });
-
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       } else {

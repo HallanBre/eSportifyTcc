@@ -11,23 +11,29 @@ export default function PartidasCard  ({})  {
   const [data, setData] = useState([]);
   
   
-  useEffect(() =>{
+  useEffect(() => {
     const fetchData = async () => {
-    try{
-      console.log(`Buscando dados do back-end ${baseUrl}/partida/partidasUsuario`);
-
-      const response = await axios.get(`${baseUrl}/partida/partidasUsuario`);
-      setData(response.data);
-
-      console.log('Dados do back-end', data);
-    }catch(e){
-      console.log('Erro ao buscar  dados do back-end', e);
-    }
-  };
-  fetchData();
-}, []);
+      try {
+        const response = await axios.get(`${baseUrl}/partida/partidasUsuario`);
+        console.log('Resposta do backend:', response.data);
+        if (Array.isArray(response.data)) {
+          setData(response.data);
+        } else {
+          console.error('O dado recebido não é um array:', response.data);
+        }
+      } catch (e) {
+        console.error('Erro ao buscar dados do back-end', e);
+      }
+    };
+    fetchData();
+  }, []);
+  
+  useEffect(() => {
+    console.log('dados atualizados: ', data);
+  }, [data]);
 
     const navigation = useNavigation();    
+    
 
     const renderItem = ({ item }) => (
       <TouchableOpacity style={styles.item} onPress={() => navigation.navigate('DescricaoJogo', { itemId: item.id })}>

@@ -3,9 +3,6 @@ import { Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 // Supondo que você tenha uma função para limpar os dados de sessão/cache
-const clearSession = async () => {
-  // Limpe os dados de sessão/cache aqui
-};
 
 const LogoutScreen = () => {
   const navigation = useNavigation();
@@ -18,12 +15,11 @@ const LogoutScreen = () => {
       Alert.alert("Logout", "Você deseja sair?", [
         {
           text: "Cancelar",
-          style: "cancel"
         },
         {
           text: "Sair",
           onPress: async () => {
-            await clearSession();
+            
             // Navegue para a tela de login ou qualquer tela inicial após o logout
             navigation.navigate('Login');
           }
