@@ -4,6 +4,7 @@ import PartidasCard from "../../components/partidaCard/partidasCard";
 import { Dropdown } from "react-native-element-dropdown";
 import { useState } from "react";
 import { baseUrl } from "../../baseUrl/BaseUrl";
+import ButtonCircle from "../../components/Button/ButtonCircle";
 
 
 export default function ({navigation}) {
@@ -17,10 +18,8 @@ export default function ({navigation}) {
       const arrayEnd = await response.json();
       if (arrayEnd !== dataEndereco) {
         setDataEndereco(arrayEnd);
-        
       }
     };
-  
     fetchData();
   }, [endereco]);
   
@@ -44,8 +43,12 @@ export default function ({navigation}) {
                     searchPlaceHolder="Procurar"
                     placeholder="Selecione uma cidade"
                 />
+              <View style={styles.botao}>
+                <ButtonCircle onPress={() => {navigation.navigate("ListaJogos")}}/>
+              </View>
+                  
             </View>
-      <PartidasCard/>
+      <PartidasCard key={endereco} endereco={endereco} />
     </SafeAreaView>
   );
 }
@@ -68,7 +71,7 @@ const styles = StyleSheet.create({
   },
   inputText:{
     fontSize: 14,
-    backgroundColor: "#d9d9d9",
+    flexDirection: "row",
     height: 50,
     width: 330,
     marginLeft: "8%",
@@ -91,7 +94,7 @@ placeholderStyle: {
 },
 dropdown: {
   height: 50,
-  width: 330,
+  width: 250,
   borderColor: 'gray',
   borderWidth: 0.5,
   borderRadius: 8,
@@ -99,6 +102,9 @@ dropdown: {
   backgroundColor: '#d9d9d9',
   color: 'black',
 },
+botao:{
+  marginLeft: 30,
+}
 
 
 });

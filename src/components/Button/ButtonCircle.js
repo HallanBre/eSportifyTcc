@@ -4,7 +4,7 @@ import {Text, TouchableOpacity, StyleSheet } from 'react-native'
 
 export default ButtonsCircle = ({onPress}) => {
     
-    let seta = "‹"
+    let seta = "🔍︎"
     return (
         <TouchableOpacity onPress={onPress} style={style.container}  >
                 <Text style={style.title}> {seta} </Text>
@@ -16,10 +16,10 @@ export default ButtonsCircle = ({onPress}) => {
 const style = StyleSheet.create({
     container: {
         
-        backgroundColor: "#47AE45",
+        backgroundColor: "gray",
         justifyContent: "center",
         alignItems: "center",
-        borderRadius: 50,
+        borderRadius: 15,
         width: 50,
         height: 50,
         
