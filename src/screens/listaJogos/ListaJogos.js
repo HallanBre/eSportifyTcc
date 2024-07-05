@@ -43,10 +43,6 @@ export default function ({navigation}) {
                     searchPlaceHolder="Procurar"
                     placeholder="Selecione uma cidade"
                 />
-              <View style={styles.botao}>
-                <ButtonCircle onPress={() => {navigation.navigate("ListaJogos")}}/>
-              </View>
-                  
             </View>
       <PartidasCard key={endereco} endereco={endereco} />
     </SafeAreaView>
@@ -94,7 +90,7 @@ placeholderStyle: {
 },
 dropdown: {
   height: 50,
-  width: 250,
+  width: 330,
   borderColor: 'gray',
   borderWidth: 0.5,
   borderRadius: 8,

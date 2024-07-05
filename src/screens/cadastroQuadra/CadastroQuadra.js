@@ -23,7 +23,7 @@ export default function CadastroQuadra({navigation}){
    const handleNavigation = () =>{ 
     navigation.reset({
       index: 0,
-      routes: [{name: 'Login'}]
+      routes: [{name: 'ListaAgendaEmpresa'}]
     }) 
   }
   const handleNavigationPartida = () =>{ 
@@ -35,11 +35,9 @@ export default function CadastroQuadra({navigation}){
 
     const [name, setName] = useState(null);
     const [categoria, setCategoria] = useState(null);
-    const [empresa, setEmpresa] = useState(null);
     const [endereco, setEndereco] = useState(null);
     const [detalheEndereco, setDetalheEndereco] = useState(null);
     const [data, setData] = useState(null);
-    const [dataEmpresa, setDataEmpresa] = useState(null);
     const [dataEndereco, setDataEndereco] = useState([]);
 
     //PUXAR OS DADOS CATEGORIA ----------------------------------------
@@ -52,27 +50,6 @@ export default function CadastroQuadra({navigation}){
                 return {key:item.id, value:item.nome}
               })
               setData(newArray)
-            })
-        }catch(e){
-          console.log('Erro ao buscar  dados do back-end', e);
-        }
-      };
-    
-      fetchData();
-    }, []);
-    
-
-    //PUXAR OS DADOS EMPRESA ----------------------------------------
-    useEffect(() =>{
-        const fetchData = async () => {
-        try{
-          axios.get(`${baseUrl}/empresa/lista`) // depois criar uma variavel para trocar isso dependendo da tela que estiver
-            .then((response) => {
-              let newArray = response.data.map((item) => {
-                return {key:item.id, value:item.nome}
-              })
-              setDataEmpresa(newArray)
-              
             })
         }catch(e){
           console.log('Erro ao buscar  dados do back-end', e);
@@ -113,7 +90,6 @@ export default function CadastroQuadra({navigation}){
             nome: name, 
             detalheEndereco: detalheEndereco,
             categoria: { id: categoria },
-            empresa: { id: empresa },
             endereco: { id: endereco },
             
         })
@@ -150,18 +126,6 @@ export default function CadastroQuadra({navigation}){
                     save="key"
                 />
             </View>
-            <View style={style.select}>
-                <SelectList
-                    setSelected={(val) => {console.log(empresa) ; setEmpresa(val)}}
-                    boxStyles={{width:330, backgroundColor:'#d9d9d9'}}
-                    dropdownStyles={{backgroundColor:'#d9d9d9'}}
-                    placeholder='selecione uma empresa'
-                    searchPlaceholder='selecione uma empresa'
-                    data={dataEmpresa}
-                    save="key"
-                />
-            </View>
-
             <View style={style.municipio}>
                 <Dropdown
                     placeholderStyle={style.placeholderStyle}

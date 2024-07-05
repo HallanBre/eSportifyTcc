@@ -1,17 +1,17 @@
 import React from 'react'
 import {StyleSheet} from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import JogadoresCard from '../../components/jogadoresCard/JogadoresCard';
+import JogandoresAgendaCard from '../../components/jogadoresAgendaCard/JogandoresAgendaCard';
 import DescricaoPartidaCard from '../../components/descricaoPartidaCard/DescricaoPartidaCard';
 
-export default function DescricaoJogo({route,navigation}){
+export default function DescricaoJogoAgenda({route,navigation}){
     const {itemId} = route.params;
 
     
     return (
         <SafeAreaView style={styles.container}>    
             <DescricaoPartidaCard itemId={itemId}/>
-            <JogadoresCard itemId={itemId} navigation={navigation} />
+            <JogandoresAgendaCard itemId={itemId} navigation={navigation} />
         </SafeAreaView>
     )
 }

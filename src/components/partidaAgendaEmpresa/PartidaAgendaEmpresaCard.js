@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import {baseUrl} from "../../baseUrl/BaseUrl";
 import { useNavigation } from '@react-navigation/native';
 
+
 export default function PartidasCard  ({})  { 
   const [data, setData] = useState([]);
   
@@ -14,7 +15,7 @@ export default function PartidasCard  ({})  {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${baseUrl}/partida/partidasUsuario`);
+        const response = await axios.get(`${baseUrl}/partida/partidasEmpresa`);
         console.log('Resposta do backend:', response.data);
         if (Array.isArray(response.data)) {
           setData(response.data);
@@ -36,7 +37,7 @@ export default function PartidasCard  ({})  {
     
 
     const renderItem = ({ item }) => (
-      <TouchableOpacity style={styles.item} onPress={() => navigation.navigate('DescricaoJogoAgenda', { itemId: item.id })}>
+      <TouchableOpacity style={styles.item} onPress={() => navigation.navigate('DescricaoJogoEmpresa', { itemId: item.id })}>
         <Text style={styles.title}>{item.quadra.nome}</Text>
         <Icon name={item.quadra.categoria?.descricao} size={100} color="white" style={styles.icon}/>
         <Text style={styles.valor}>R$: {parseFloat(item.valor).toFixed(2).replace('.', ',')}</Text>

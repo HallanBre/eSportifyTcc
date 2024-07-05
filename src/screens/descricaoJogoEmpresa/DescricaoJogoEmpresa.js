@@ -1,7 +1,8 @@
 import React from 'react'
 import {StyleSheet} from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import JogadoresCard from '../../components/jogadoresCard/JogadoresCard';
+
+import JogadoresEmpresaCard from '../../components/jogadoresEmpresaCard/JogadoresEmpresaCard';
 import DescricaoPartidaCard from '../../components/descricaoPartidaCard/DescricaoPartidaCard';
 
 export default function DescricaoJogo({route,navigation}){
@@ -11,7 +12,7 @@ export default function DescricaoJogo({route,navigation}){
     return (
         <SafeAreaView style={styles.container}>    
             <DescricaoPartidaCard itemId={itemId}/>
-            <JogadoresCard itemId={itemId} navigation={navigation} />
+            <JogadoresEmpresaCard itemId={itemId} navigation={navigation} /> 
         </SafeAreaView>
     )
 }

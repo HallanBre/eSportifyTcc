@@ -65,8 +65,8 @@ export default JogadoresCard = ({ itemId, navigation }) => {
 
   async function sendForm() {
     try {
-      let response = await fetch(`${baseUrl}/partida/participar/${itemId}`, {
-        method: "POST",
+      let response = await fetch(`${baseUrl}/partida/sair/${itemId}`, {
+        method: "DELETE",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
@@ -117,7 +117,7 @@ export default JogadoresCard = ({ itemId, navigation }) => {
         ListFooterComponent={
           <View style={styles.buttonContainer}>
             <Buttons
-              title="Entrar na partida"
+              title="Sair da partida"
               onPress={() => handleButtonPress()}
             />
           </View>

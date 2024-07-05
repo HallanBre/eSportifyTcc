@@ -11,6 +11,9 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import DescricaoJogo from "./screens/descricaoJogo/DescricaoJogo";
 import "react-native-gesture-handler";
 import ListaAgenda from "./screens/listaAgenda/ListaAgenda";
+import ListaAgendaEmpresa from "./screens/listaAgendasEmpresa/ListaAgendaEmpresa";
+import DescricaoJogoEmpresa from "./screens/descricaoJogoEmpresa/DescricaoJogoEmpresa";
+import DescricaoJogoAgenda from "./screens/descricacaoJogoAgenda/DescricaoJogoAgenda";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -100,6 +103,21 @@ function MyStack() {
         options={{ title: "" }}
         name="ListaAgenda"
         component={ListaAgenda}
+      />
+      <Stack.Screen
+        options={{ title: "" }}
+        name="ListaAgendaEmpresa"
+        component={ListaAgendaEmpresa}
+      />
+      <Stack.Screen
+        options={{ title: "" }}
+        name="DescricaoJogoEmpresa"
+        component={DescricaoJogoEmpresa}
+      />
+      <Stack.Screen
+        options={{ title: "" }}
+        name="DescricaoJogoAgenda"
+        component={DescricaoJogoAgenda}
       />
     </Stack.Navigator>
   );

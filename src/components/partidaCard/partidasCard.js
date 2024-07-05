@@ -78,7 +78,7 @@ export default function PartidasCard({ endereco }) {
     <View>
       <FlatList
         ItemSeparatorComponent={separatorItem}
-        data={dataQuadraEndereco && dataQuadraEndereco.length > 0 ? dataQuadraEndereco : data}
+        data={dataQuadraEndereco}
         keyExtractor={(item) => item.id.toString()}
         renderItem={renderItem}
       />

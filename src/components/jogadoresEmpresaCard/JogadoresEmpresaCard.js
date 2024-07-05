@@ -79,7 +79,7 @@ export default JogadoresCard = ({ itemId, navigation }) => {
           index: 0,
           routes: [{ name: "ListaJogos" }],
         });
-        let data = await response.text(); // Altere esta linha
+        let data = await response.json();
         console.log(data);
       }
     } catch (error) {
@@ -87,7 +87,7 @@ export default JogadoresCard = ({ itemId, navigation }) => {
         "There was a problem with the fetch operation: " + error.message
       );
     }
-}
+  }
 
   const Item = ({ item }) => {
     const birthDateParts = item.date.split('/');
@@ -114,14 +114,6 @@ export default JogadoresCard = ({ itemId, navigation }) => {
         data={dadosAchatados}
         keyExtractor={(item) => item.id.toString()}
         renderItem={Item}
-        ListFooterComponent={
-          <View style={styles.buttonContainer}>
-            <Buttons
-              title="Entrar na partida"
-              onPress={() => handleButtonPress()}
-            />
-          </View>
-        }
       />
     </View>
   );
