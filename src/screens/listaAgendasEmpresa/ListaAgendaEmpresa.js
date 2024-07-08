@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { SafeAreaView, StyleSheet, Text, View,TextInput } from "react-native";
 import PartidaAgendaEmpresaCard from "../../components/partidaAgendaEmpresa/PartidaAgendaEmpresaCard";
+import Buttons from "../../components/Button/Button";
 
 
 export default function ({navigation}) {
@@ -15,6 +16,9 @@ export default function ({navigation}) {
   return (
     <SafeAreaView style={styles.container}>
       <PartidaAgendaEmpresaCard/>
+      <View  style={styles.buttonContainer}>
+          <Buttons title="Voltar" onPress={()=>navigation.reset({index: 0,routes: [{name: 'CadastroQuadra'}]}) }/>
+      </View>    
     </SafeAreaView>
   );
 }
@@ -35,7 +39,13 @@ const styles = StyleSheet.create({
     paddingTop: 28,
     
   },
-  
+  buttonContainer:{
+    paddingTop: 170,
+    width: 390,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+},
   inputText:{
     fontSize: 14,
     backgroundColor: "#d9d9d9",

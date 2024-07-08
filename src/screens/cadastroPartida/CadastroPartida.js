@@ -77,7 +77,7 @@ export default function CadastroPartida({navigation})  {
     } else {
       navigation.reset({
           index: 0,
-          routes: [{name: 'ListaJogos'}]
+          routes: [{name: 'CadastroPartida'}]
       }) //MUDAR PARA UM VIZUALIZADOR DE QUADRAS CADASTRADAS PELA EMPRESA
       let data = await response.json();
       console.log(data);
@@ -116,7 +116,13 @@ export default function CadastroPartida({navigation})  {
                 <Buttons title="Cadastrar" onPress={()=>handleButtonPress()}/>
             </View>
             <View  style={style.buttonContainer}>
-                <Buttons title="Voltar" onPress={()=>handleNavigation()}/>
+                <Buttons title="Cadastrar Quadra" onPress={()=>handleNavigation()}/>
+            </View>
+            <View  style={style.buttonContainer}>
+                <Buttons title="Agenda" onPress={()=>handleNavigation()}/>
+            </View>
+            <View  style={style.buttonContainer}>
+                <Buttons title="Sair" onPress={()=> navigation.reset({index: 0, routes: [{name: 'Login'}]})}/>
             </View>
 
         </SafeAreaView>
@@ -153,7 +159,7 @@ const style = StyleSheet.create({
     color: '#7A7979',
   },
   dropdown:{
-    width: 330,
+    width: 300,
     height: 40,
     backgroundColor: '#d9d9d9',
     borderRadius: 10,

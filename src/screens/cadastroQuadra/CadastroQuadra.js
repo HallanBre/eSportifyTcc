@@ -151,7 +151,10 @@ export default function CadastroQuadra({navigation}){
                 <Buttons title="Cadastrar Partida" onPress={()=>handleNavigationPartida()}/>
             </View>
             <View  style={style.buttonContainer}>
-                <Buttons title="Sairr" onPress={()=>handleNavigation()}/>
+                <Buttons title="Agenda" onPress={()=>handleNavigation()}/>
+            </View>
+            <View  style={style.buttonContainer}>
+                <Buttons title="Sair" onPress={()=>navigation.reset({index: 0,routes: [{name: 'Login'}]}) }/>
             </View>
 
         </SafeAreaView>
